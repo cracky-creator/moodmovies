@@ -10,6 +10,19 @@ body{
     padding: 0;
 }
 
+section{
+    width: 100%;
+    padding: 23px;
+    box-sizing: border-box;
+}
+
 ul{
     list-style-type: none;
+}
+
+fieldset{
+    border: none;
+    padding: 23px;
+    display: flex;
+    column-gap: 23px;
 }

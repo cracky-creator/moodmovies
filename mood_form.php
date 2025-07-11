@@ -8,91 +8,84 @@
 
     $styles = getStylesList();
 
+    include 'includes/open.php';
+
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoodMovies Formulaire</title>
-</head>
-<body>
 
-    <section>
+<section>
 
-        <form action="index.php" method="get" class="mood_form">
+    <form action="index.php" method="get" class="mood_form">
 
-            <fieldset class="mood_form__emotion">
+        <fieldset class="mood_form__emotion">
 
-                <h3 class="mood_form__question">Quel est ton mood actuellement ?</h3>
+            <h3 class="mood_form__question">Quel est ton mood actuellement ?</h3>
 
-                <ul class="mood_form__list">
+            <ul class="mood_form__list">
 
-                <?php foreach ($emotions as $emotion){ ?>
+            <?php foreach ($emotions as $emotion){ ?>
 
-                    <li class="mood_form__el">
+                <li class="mood_form__el">
 
-                        <label for="user_emotion"><p><?php echo $emotion ?></p></label>
-    
-                        <input type="radio" id="user_emotion" name="user_emotion[]" value="<?php echo $emotion ?>">
+                    <label for="user_emotion"><p><?php echo $emotion ?></p></label>
 
-                    </li>
+                    <input type="radio" id="user_emotion" name="user_emotion[]" value="<?php echo $emotion ?>">
 
-                <?php } ?>
+                </li>
 
-                </ul>
+            <?php } ?>
 
-            </fieldset>
+            </ul>
 
-            <fieldset class="mood_form__intention">
+        </fieldset>
 
-                <h3 class="mood_form__question">Pourquoi souhaites-tu regarder un film ?</h3>
+        <fieldset class="mood_form__intention">
 
-                <ul class="mood_form__list">
+            <h3 class="mood_form__question">Pourquoi souhaites-tu regarder un film ?</h3>
 
-                <?php foreach ($intentions as $intention){ ?>
+            <ul class="mood_form__list">
 
-                    <li class="mood_form__el">
+            <?php foreach ($intentions as $intention){ ?>
 
-                        <label for="user_intention"><p><?php echo $intention ?></p></label>
-    
-                        <input type="radio" id="user_intention" name="user_intention[]" value="<?php echo $intention ?>">
+                <li class="mood_form__el">
 
-                    </li>
+                    <label for="user_intention"><p><?php echo $intention ?></p></label>
 
-                <?php } ?>
+                    <input type="radio" id="user_intention" name="user_intention[]" value="<?php echo $intention ?>">
 
-                </ul>
+                </li>
 
-            </fieldset>
+            <?php } ?>
 
-            <fieldset class="mood_form__style">
+            </ul>
 
-                <h3 class="mood_form__question">Quel style de film souhaites-tu découvrir ?</h3>
+        </fieldset>
 
-                <ul class="mood_form__list">
+        <fieldset class="mood_form__style">
 
-                <?php foreach ($styles as $style){ ?>
+            <h3 class="mood_form__question">Quel style de film souhaites-tu découvrir ?</h3>
 
-                    <li class="mood_form__el">
+            <ul class="mood_form__list">
 
-                        <label for="user_style"><p><?php echo $style ?></p></label>
-    
-                        <input type="radio" id="user_style" name="user_style[]" value="<?php echo $style ?>">
+            <?php foreach ($styles as $style){ ?>
 
-                    </li>
+                <li class="mood_form__el">
 
-                <?php } ?>
+                    <label for="user_style"><p><?php echo $style ?></p></label>
 
-                </ul>
+                    <input type="radio" id="user_style" name="user_style[]" value="<?php echo $style ?>">
 
-            </fieldset>
+                </li>
 
-            <button type="submit" class="mood_form__btn">Lancer la recherche</button>
+            <?php } ?>
 
-        </form>
+            </ul>
 
-    </section>
+        </fieldset>
 
-</body>
-</html>
+        <button type="submit" class="mood_form__btn">Lancer la recherche</button>
+
+    </form>
+
+</section>
+
+<?php include 'includes/close.php'; ?>

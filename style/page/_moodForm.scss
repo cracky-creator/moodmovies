@@ -1,0 +1,28 @@
+.mood_form{
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+    }
+
+    &__el{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 16px;
+        border: 1px white solid;
+        padding: 23px 46px;
+        border-radius: 10px;
+
+        // input[type="radio"] {
+        //     display: none;
+        // }
+
+        &:hover{
+            cursor: pointer;
+        }
+
+    }
+    
+}

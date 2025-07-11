@@ -10,8 +10,22 @@ body {
   padding: 0;
 }
 
+section {
+  width: 100%;
+  padding: 23px;
+  box-sizing: border-box;
+}
+
 ul {
   list-style-type: none;
+}
+
+fieldset {
+  border: none;
+  padding: 23px;
+  display: flex;
+  -moz-column-gap: 23px;
+       column-gap: 23px;
 }
 
 .suggestions {
@@ -75,4 +89,23 @@ ul {
 }
 .suggestions__liste__el:hover .el__liste {
   top: 0;
+}
+
+.mood_form__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+.mood_form__el {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  border: 1px white solid;
+  padding: 23px 46px;
+  border-radius: 10px;
+}
+.mood_form__el:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
