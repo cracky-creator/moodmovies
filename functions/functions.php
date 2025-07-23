@@ -266,4 +266,68 @@ function getMatchingFilms(array $userEmotions, array $userIntentions, array $use
     }
 }
 
+function getMatchingFilmsByMovieID(int $movieID): array {
+    try {
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Récupère tous les films
+        $films = getFilmsListe();
+
+        // Trouve le film de référence
+        $selectedFilm = null;
+        foreach ($films as $film) {
+            if ($film['id'] == $movieID) {
+                $selectedFilm = $film;
+                break;
+            }
+        }
+
+        if (!$selectedFilm) {
+            return []; // Film non trouvé
+        }
+
+        // Critères du film sélectionné
+        $targetEmotions = array_filter($selectedFilm['emotions']);
+        $targetIntentions = array_filter($selectedFilm['intentions']);
+        $targetStyles = array_filter($selectedFilm['styles']);
+
+        $filmsMatches = [];
+
+        foreach ($films as $film) {
+            // On ignore le film lui-même
+            if ($film['id'] == $movieID) {
+                continue;
+            }
+
+            $filmEmotions = array_filter($film['emotions']);
+            $filmIntentions = array_filter($film['intentions']);
+            $filmStyles = array_filter($film['styles']);
+
+            // Calcul du score de similarité
+            $score = 0;
+            $score += count(array_intersect($targetEmotions, $filmEmotions));
+            $score += count(array_intersect($targetIntentions, $filmIntentions));
+            $score += count(array_intersect($targetStyles, $filmStyles));
+
+            if ($score > 0) {
+                $film['score'] = $score;
+                $filmsMatches[] = $film;
+            }
+        }
+
+        // Trier par score décroissant, puis note décroissante
+        usort($filmsMatches, function ($a, $b) {
+            return [$b['score'], $b['note']] <=> [$a['score'], $a['note']];
+        });
+
+        return array_slice($filmsMatches, 0, 20);
+
+    } catch (PDOException $e) {
+        echo "❌ Erreur : " . $e->getMessage();
+        return [];
+    }
+}
+
+
 ?>

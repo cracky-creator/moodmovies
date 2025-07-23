@@ -25,9 +25,9 @@ include 'includes/open.php';
 
                 <li class="suggestions__liste__el">
 
-                    <a href="movie.php?id=<?php echo $film['id'] ?>"><img src="<?php echo $film['affiche_url']; ?>" alt="Affiche du film <?php echo $film['titre']; ?>." class="el__asset"></a>
+                    <a href="movie.php?id=<?php echo $film['id'] ?>&emotions=<?php echo implode(', ', $film['emotions'])?>&intentions=<?php echo implode(', ', $film['intentions']) ?>&styles=<?php echo implode(', ', $film['styles']) ?>"><img src="<?php echo $film['affiche_url']; ?>" alt="Affiche du film <?php echo $film['titre']; ?>." class="el__asset"></a>
 
-                    <a href="movie.php?id=<?php echo $film['id'] ?>"><h3 class="el__title"><?php echo $film['titre']; ?></h3></a>
+                    <a href="movie.php?id=<?php echo $film['id'] ?>&emotions=<?php echo implode(', ', $film['emotions'])?>&intentions=<?php echo implode(', ', $film['intentions']) ?>&styles=<?php echo implode(', ', $film['styles']) ?>"><h3 class="el__title"><?php echo $film['titre']; ?></h3></a>
 
                 </li>
 

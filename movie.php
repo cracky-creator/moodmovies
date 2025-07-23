@@ -5,8 +5,12 @@
     include 'includes/open.php';
 
     $movieID = $_GET['id'];
+    $movieEmotions = $_GET['emotions'];
+    $movieIntentions = $_GET['intentions'];
+    $movieStyles = $_GET['styles'];
 
     $movies = getFilmsListe();
+    $matchingMovies = getMatchingFilmsByMovieID($movieID);
 
 ?>
 
@@ -41,4 +45,25 @@
         <?php }
 
     } ?>
+
+</section>
+
+<section class="matching">
+
+    <ul class="matching__list">
+
+        <?php foreach($matchingMovies as $matchingMovie) {?>
+            
+            <li class="suggestions__liste__el">
+            
+                <a href="movie.php?id=<?php echo $matchingMovie['id'] ?>&emotions=<?php echo implode(', ', $matchingMovie['emotions'])?>&intentions=<?php echo implode(', ', $matchingMovie['intentions']) ?>&styles=<?php echo implode(', ', $matchingMovie['styles']) ?>"><img src="<?php echo $matchingMovie['affiche_url']; ?>" alt="Affiche du film <?php echo $matchingMovie['titre']; ?>." class="el__asset"></a>
+            
+                <a href="movie.php?id=<?php echo $matchingMovie['id'] ?>&emotions=<?php echo implode(', ', $matchingMovie['emotions'])?>&intentions=<?php echo implode(', ', $matchingMovie['intentions']) ?>&styles=<?php echo implode(', ', $matchingMovie['styles']) ?>"><h3 class="el__title"><?php echo $matchingMovie['titre']; ?></h3></a>
+            
+            </li>
+            
+        <?php } ?>
+
+    </ul>
+
 </section>
