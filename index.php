@@ -29,15 +29,6 @@ include 'includes/open.php';
 
                     <a href="movie.php?id=<?php echo $film['id'] ?>"><h3 class="el__title"><?php echo $film['titre']; ?></h3></a>
 
-                    <ul class="el__liste">
-
-                        <li class="el__liste__info"><p>Sortie en salle : <?php echo $film['annee']; ?></p></li>
-
-                        <li class="el__liste__info"><p>Genres : <?php echo $film['genres']; ?></p></li>
-
-                        <li class="el__liste__info"><p>Note : <?php echo $film['note']; ?></p></li>
-
-                    </ul>
                 </li>
 
             <?php } ?>
