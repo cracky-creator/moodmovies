@@ -25,9 +25,9 @@ include 'includes/open.php';
 
                 <li class="suggestions__liste__el">
 
-                    <img src="<?php echo $film['affiche_url']; ?>" alt="Affiche du film <?php echo $film['titre']; ?>." class="el__asset">
+                    <a href="movie.php?id=<?php echo $film['id'] ?>"><img src="<?php echo $film['affiche_url']; ?>" alt="Affiche du film <?php echo $film['titre']; ?>." class="el__asset"></a>
 
-                    <h3 class="el__title"><?php echo $film['titre']; ?></h3>
+                    <a href="movie.php?id=<?php echo $film['id'] ?>"><h3 class="el__title"><?php echo $film['titre']; ?></h3></a>
 
                     <ul class="el__liste">
 
