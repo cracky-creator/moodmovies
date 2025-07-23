@@ -43,7 +43,6 @@ h1, h2, h3, h4, p {
   padding: 23px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 .suggestions__liste {
   display: flex;
@@ -59,11 +58,15 @@ h1, h2, h3, h4, p {
   position: relative;
 }
 .suggestions__liste__el .el__asset {
-  height: 300px;
+  max-width: 200px;
   border-radius: 10px;
 }
 .suggestions__liste__el .el__title {
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+  text-overflow: ellipsis;
 }
 .suggestions__liste__el .el__liste {
   display: flex;

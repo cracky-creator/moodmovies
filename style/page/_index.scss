@@ -5,7 +5,6 @@
     padding: 23px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     &__liste{
         display: flex;
@@ -22,12 +21,17 @@
             .el{
 
                 &__asset{
-                    height: 300px;
+                    max-width: 200px;
                     border-radius: 10px;
                 }
 
                 &__title{
                     text-align: center;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    max-width: 200px;
+                    text-overflow: ellipsis;
+                    
                 }
                 
                 &__liste{
