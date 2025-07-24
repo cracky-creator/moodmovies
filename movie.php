@@ -67,3 +67,5 @@
     </ul>
 
 </section>
+
+<?php include 'includes/close.php'; ?>
