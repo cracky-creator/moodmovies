@@ -252,13 +252,13 @@ function getMatchingFilms(array $userEmotions, array $userIntentions, array $use
             }
         }
 
-        // Tri : d'abord par score, ensuite par note
+        // Tri uniquement par score décroissant
         usort($filmsMatches, function ($a, $b) {
-            return [$b['score'], $b['note']] <=> [$a['score'], $a['note']];
+            return $b['score'] <=> $a['score'];
         });
 
         // Limite à 20 films max
-        return array_slice($filmsMatches, 0, 20);
+        return array_slice($filmsMatches, 0, 40);
 
     } catch (PDOException $e) {
         echo "❌ Erreur : " . $e->getMessage();
@@ -316,9 +316,9 @@ function getMatchingFilmsByMovieID(int $movieID): array {
             }
         }
 
-        // Trier par score décroissant, puis note décroissante
+        // Tri uniquement par score décroissant
         usort($filmsMatches, function ($a, $b) {
-            return [$b['score'], $b['note']] <=> [$a['score'], $a['note']];
+            return $b['score'] <=> $a['score'];
         });
 
         return array_slice($filmsMatches, 0, 20);
@@ -329,5 +329,55 @@ function getMatchingFilmsByMovieID(int $movieID): array {
     }
 }
 
+function getTop40FilmsPerEmotion(array $userIntentions, array $userStyles): array {
+    try {
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $movies = getFilmsListe(); // Tous les films avec leurs métadonnées
+        $emotions = getEmotionsList(); // Liste complète des émotions possibles
+
+        $resultats = [];
+
+        foreach ($emotions as $emotion) {
+            $moviesMatches = [];
+
+            foreach ($movies as $movie) {
+                $movieEmotions = array_filter($movie['emotions']);
+                $movieIntentions = array_filter($movie['intentions']);
+                $movieStyles = array_filter($movie['styles']);
+
+                // Vérifie que le film contient l’émotion actuelle
+                if (!in_array($emotion, $movieEmotions)) {
+                    continue;
+                }
+
+                $score = 0;
+                $score += count(array_intersect([$emotion], $movieEmotions)); // sera toujours 1 si présent
+                $score += count(array_intersect($userIntentions, $movieIntentions));
+                $score += count(array_intersect($userStyles, $movieStyles));
+
+                if ($score > 0) {
+                    $movie['score'] = $score;
+                    $moviesMatches[] = $movie;
+                }
+            }
+
+            // Tri des films correspondants à cette émotion par score décroissant
+            usort($moviesMatches, function ($a, $b) {
+                return $b['score'] <=> $a['score'];
+            });
+
+            // Garde les 40 premiers films
+            $resultats[$emotion] = array_slice($moviesMatches, 0, 40);
+        }
+
+        return $resultats;
+
+    } catch (PDOException $e) {
+        echo "❌ Erreur : " . $e->getMessage();
+        return [];
+    }
+}
 
 ?>
