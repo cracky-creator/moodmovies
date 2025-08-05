@@ -36,6 +36,26 @@ h1, h2, h3, h4, p {
   color: white;
 }
 
+h1 {
+  font-size: 72px;
+}
+
+h2 {
+  font-size: 50.904px;
+}
+
+h3 {
+  font-size: 36px;
+}
+
+h4 {
+  font-size: 25.452px;
+}
+
+p {
+  font-size: 18px;
+}
+
 .suggestions {
   width: 100%;
   height: 100vh;

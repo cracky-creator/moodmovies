@@ -1,0 +1,40 @@
+// font size
+$p-fs-desktop: 18px;
+$h4-fs-desktop: calc($p-fs-desktop * 1.414);
+$h3-fs-desktop: calc($p-fs-desktop * 2);
+$h2-fs-desktop: calc($h4-fs-desktop * 2);
+$h1-fs-desktop: calc($h3-fs-desktop * 2);
+
+$p-fs-mobile: 16px;
+$h4-fs-mobile: calc($p-fs-mobile * 1.414);
+$h3-fs-mobile: calc($p-fs-mobile * 2);
+$h2-fs-mobile: calc($h4-fs-mobile * 2);
+$h1-fs-mobile: calc($h3-fs-mobile * 2);
+
+// font-weight
+// $h-fw: 600;
+// $p-fw: 400;
+
+// margin
+$p-margin-desktop: $p-fs-desktop;
+$h1-margin-desktop: $h1-fs-desktop;
+$h2-margin-desktop: $h2-fs-desktop;
+$h3-margin-desktop: $h3-fs-desktop;
+$h4-margin-desktop: $h4-fs-desktop;
+
+$p-margin-mobile: $p-fs-mobile;
+$h1-margin-mobile: $h1-fs-mobile;
+$h2-margin-mobile: $h2-fs-mobile;
+$h3-margin-mobile: $h3-fs-mobile;
+$h4-margin-mobile: $h4-fs-mobile;
+
+// color
+$white: #f5f5f5;
+$black: #000000;
+$blue: #1e6471;
+$black-shadow-hard: #00000080;
+$black-shadow: #00000020;
+$gray-shadow: #00000010;
+
+// section max-width
+$section-maxWidth: 1000px;
