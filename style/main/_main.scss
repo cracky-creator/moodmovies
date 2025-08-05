@@ -11,8 +11,7 @@ body{
 }
 
 section{
-    width: 100%;
-    padding: 23px;
+    padding: $p-margin-desktop;
     box-sizing: border-box;
 }
 
@@ -31,8 +30,9 @@ a{
     text-decoration: none;
 }
 
-h1, h2, h3, h4, p{
+h1, h2, h3, h4{
     color: white;
+    font-family: Quicksand;
 }
 
 h1{
@@ -53,4 +53,6 @@ h4{
 
 p{
     font-size: $p-fs-desktop;
+    color: white;
+    font-family: Roboto;
 }
