@@ -20,21 +20,17 @@
 
             <h3 class="mood_form__question">Quel est ton mood actuellement ?</h3>
 
-            <ul class="mood_form__list">
+            <select name="mood_form__emotion" id="mood_form__emotion" class="mood_form__emotion">
+
+                <option value="emotion"><p>Emotion</p></option>
 
             <?php foreach ($emotions as $emotion){ ?>
 
-                <li class="mood_form__el">
-
-                    <label for="user_emotion"><p><?php echo $emotion ?></p></label>
-
-                    <input type="radio" id="user_emotion" name="user_emotion[]" value="<?php echo $emotion ?>">
-
-                </li>
-
+                <option id="user_emotion" name="user_emotion[]" value="<?php echo $emotion ?>"><p><?php echo $emotion ?></p></option>
+                
             <?php } ?>
 
-            </ul>
+            </select>
 
         </fieldset>
 
@@ -42,21 +38,17 @@
 
             <h3 class="mood_form__question">Pourquoi souhaites-tu regarder un film ?</h3>
 
-            <ul class="mood_form__list">
+            <select name="mood_form__intention" id="mood_form__intention" class="mood_form__intention">
+
+                <option value="emotion"><p>Intention</p></option>
 
             <?php foreach ($intentions as $intention){ ?>
 
-                <li class="mood_form__el">
-
-                    <label for="user_intention"><p><?php echo $intention ?></p></label>
-
-                    <input type="radio" id="user_intention" name="user_intention[]" value="<?php echo $intention ?>">
-
-                </li>
-
+                <option id="user_intention" name="user_intention[]" value="<?php echo $intention ?>"><p><?php echo $intention ?></p></option>
+                
             <?php } ?>
 
-            </ul>
+            </select>
 
         </fieldset>
 
@@ -64,21 +56,17 @@
 
             <h3 class="mood_form__question">Quel style de film souhaites-tu découvrir ?</h3>
 
-            <ul class="mood_form__list">
+            <select name="mood_form__style" id="mood_form__style" class="mood_form__style">
+
+                <option value="emotion"><p>style</p></option>
 
             <?php foreach ($styles as $style){ ?>
 
-                <li class="mood_form__el">
-
-                    <label for="user_style"><p><?php echo $style ?></p></label>
-
-                    <input type="radio" id="user_style" name="user_style[]" value="<?php echo $style ?>">
-
-                </li>
-
+                <option id="user_style" name="user_style[]" value="<?php echo $style ?>"><p><?php echo $style ?></p></option>
+                
             <?php } ?>
 
-            </ul>
+            </select>
 
         </fieldset>
 
