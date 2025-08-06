@@ -14,7 +14,7 @@
 
 ?>
 
-<section>
+<section class="movie_show">
 
     <?php foreach($movies as $movie){
 
@@ -24,9 +24,10 @@
 
                 <img src="<?php echo $movie['affiche_url']; ?>" alt="Affiche du film <?php echo $movie['titre']; ?>." class="movie__asset">
 
-                <h3 class="movie__title"><?php echo $movie['titre']; ?></h3>
-
+                
                 <ul class="movie__list">
+
+                    <li class="movie__list__el"><h3 class="movie__title"><?php echo $movie['titre']; ?></h3></li>
 
                     <li class="movie__list__el"><p>Avec <?php echo $movie['acteurs']; ?></p></li>
 
@@ -48,17 +49,19 @@
 
 </section>
 
-<section class="matching">
+<section class="matching_movies">
+
+    <h3>Titres similaires</h3>
 
     <ul class="matching__list">
 
         <?php foreach($matchingMovies as $matchingMovie) {?>
             
-            <li class="suggestions__liste__el">
+            <li class="matching__list__el">
             
                 <a href="movie.php?id=<?php echo $matchingMovie['id'] ?>&emotions=<?php echo implode(', ', $matchingMovie['emotions'])?>&intentions=<?php echo implode(', ', $matchingMovie['intentions']) ?>&styles=<?php echo implode(', ', $matchingMovie['styles']) ?>"><img src="<?php echo $matchingMovie['affiche_url']; ?>" alt="Affiche du film <?php echo $matchingMovie['titre']; ?>." class="el__asset"></a>
             
-                <a href="movie.php?id=<?php echo $matchingMovie['id'] ?>&emotions=<?php echo implode(', ', $matchingMovie['emotions'])?>&intentions=<?php echo implode(', ', $matchingMovie['intentions']) ?>&styles=<?php echo implode(', ', $matchingMovie['styles']) ?>"><h3 class="el__title"><?php echo $matchingMovie['titre']; ?></h3></a>
+                <a href="movie.php?id=<?php echo $matchingMovie['id'] ?>&emotions=<?php echo implode(', ', $matchingMovie['emotions'])?>&intentions=<?php echo implode(', ', $matchingMovie['intentions']) ?>&styles=<?php echo implode(', ', $matchingMovie['styles']) ?>"><h4 class="el__title"><?php echo $matchingMovie['titre']; ?></h4></a>
             
             </li>
             

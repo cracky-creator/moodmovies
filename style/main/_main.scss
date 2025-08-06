@@ -30,7 +30,7 @@ a{
     text-decoration: none;
 }
 
-h1, h2, h3, h4{
+h1, h2, h3{
     color: white;
     font-family: Quicksand;
 }
@@ -49,6 +49,8 @@ h3{
 
 h4{
     font-size: $h4-fs-desktop;
+    color: white;
+    font-family: Roboto;
 }
 
 p{
