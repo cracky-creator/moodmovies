@@ -1,17 +1,36 @@
 {
-  "name": "tmdb-import",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@dwmaj/workflow",
+  "version": "1.1.0",
+  "description": "",
+  "main": "src/index.html",
   "scripts": {
+    "build": "npm run clean && npx mix --production",
+    "start": "npx mix watch",
+    "watch": "npx mix watch",
+    "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwmaj/workflow.git"
+  },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/dwmaj/workflow/issues"
+  },
+  "homepage": "https://github.com/dwmaj/workflow#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "laravel-mix": "^6.0.41",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.0",
+    "sass-loader": "^12.4.0"
+  },
   "dependencies": {
-    "axios": "^1.10.0",
-    "dotenv": "^17.1.0",
-    "mysql2": "^3.14.1"
+    "bootstrap": "^5.3.3",
+    "gsap": "^3.12.5",
+    "wavesurfer.js": "^7.8.16"
   }
 }
