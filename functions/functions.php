@@ -380,4 +380,50 @@ function getTopMoviesByEmotion(array $userIntentions, array $userStyles): array 
     }
 }
 
+// charges php mailer 
+require __DIR__ . '/../vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+function envoyerEmailVerification($email, $username, $verification_token) {
+
+    $mail = new PHPMailer(true);
+
+    try {
+        // Configuration du serveur SMTP
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';             // Serveur SMTP (ici Gmail)
+        $mail->SMTPAuth   = true;
+        $mail->Username   = EMAIL_ADMIN;        // Ton adresse Gmail
+        $mail->Password   = APP_PASSWORD;  // Ton mot de passe d’application Gmail
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Chiffrement TLS
+        $mail->Port       = 587;
+
+        // Expéditeur et destinataire
+        $mail->setFrom('no-reply@moodmovies.com', 'MoodMovies');
+        $mail->addAddress($email, $username);
+
+        // Contenu du message
+        $mail->isHTML(false);
+        $mail->Subject = 'Confirme ton inscription sur MoodMovies';
+
+        $lien = "http://localhost:8888/moodmovies/verify.php?token" . urlencode($verification_token);
+        $message = "Bonjour $username,\n\n";
+        $message .= "Merci pour ton inscription sur MoodMovies !\n";
+        $message .= "Pour activer ton compte, clique sur ce lien ou copie-colle dans ton navigateur :\n\n";
+        $message .= "$lien\n\n";
+        $message .= "Si tu n'as pas demandé cette inscription, ignore ce message.\n\n";
+        $message .= "À bientôt sur MoodMovies !";
+
+        $mail->Body = $message;
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        error_log("Erreur envoi mail: " . $mail->ErrorInfo);
+        return false;
+    }
+}
+
 ?>

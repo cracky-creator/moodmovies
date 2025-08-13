@@ -1,0 +1,17 @@
+{
+    "name": "thibault/moodmovies",
+    "autoload": {
+        "psr-4": {
+            "Thibault\\Moodmovies\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cracky Boy",
+            "email": "thibault.varga@student.heaj.be"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.10"
+    }
+}

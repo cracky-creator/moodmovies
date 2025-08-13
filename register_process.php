@@ -1,5 +1,8 @@
 <?php
-require 'config/db.php'; // Fichier de connexion à ta base de données
+
+require 'config/config.php'; // Fichier de connexion à ta base de données
+
+require 'functions/functions.php';
 
 // Récupération des données du formulaire
 $username = trim($_POST['username']);
@@ -44,10 +47,13 @@ $sql = "INSERT INTO users (username, email, password_hash, is_verified, verifica
 $stmt = $pdo->prepare($sql);
 
 if ($stmt->execute([$username, $email, $hashedPassword, $verification_token])) {
-    // Ici tu peux appeler ta fonction d'envoi de mail avec le token (à créer)
-
-    echo "Inscription réussie ! Un email de confirmation a été envoyé à $email. Vérifie ta boîte mail pour activer ton compte.";
+    if (envoyerEmailVerification($email, $username, $verification_token)) {
+        echo "Inscription réussie ! Un email de confirmation a été envoyé à $email.";
+    } else {
+        echo "Inscription réussie, mais l'envoi de l'email a échoué.";
+    }
 } else {
     echo "Erreur lors de l'inscription.";
 }
+
 ?>
