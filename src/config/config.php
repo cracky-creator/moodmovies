@@ -5,11 +5,17 @@ $OPENAI_API_KEY = 'sk-proj-iK26cOX4IfhpNn64Gdny-oOrRs7wdBSonO74PZkEiu9CxU61SIjhZ
 // Clé TMDb
 $TMDB_API_KEY = 'be20320ab119607f0acc239b433fbf29'; // Tu l’utilises déjà
 
-// Infos base de données
-define('DB_HOST', 'thibaujmmdb.mysql.db');
-define('DB_NAME', 'thibaujmmdb');
-define('DB_USER', 'thibaujmmdb');
-define('DB_PASS', 'dooMseivom01');
+// // Infos base de données
+// define('DB_HOST', 'thibaujmmdb.mysql.db');
+// define('DB_NAME', 'thibaujmmdb');
+// define('DB_USER', 'thibaujmmdb');
+// define('DB_PASS', 'dooMseivom01');
+
+// Infos base de données locale
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'moodmovies');
+define('DB_USER', 'root');
+define('DB_PASS', 'root');
 
 // infos personnelles
 define("EMAIL_ADMIN", "thibault@varga.be");

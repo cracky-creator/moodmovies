@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Chercher l'utilisateur par email (on récupère aussi verified)
-    $stmt = $pdo->prepare("SELECT id, username, password_hash, verified FROM users WHERE email = ?");
+    $stmt = $pdo->prepare("SELECT id, username, password_hash, is_verified FROM users WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Vérifier si le compte est activé
-    if ($user['verified'] == 0) {
+    if ($user['is_verified'] == 0) {
         header("refresh:5;url=login.php");
         echo "Votre compte n'a pas encore été vérifié. Veuillez cliquer sur le lien envoyé par email. Redirection vers connexion dans 5s.";
         exit;

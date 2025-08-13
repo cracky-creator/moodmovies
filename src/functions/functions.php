@@ -381,7 +381,7 @@ function getTopMoviesByEmotion(array $userIntentions, array $userStyles): array 
 }
 
 // charges php mailer 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -408,7 +408,7 @@ function envoyerEmailVerification($email, $username, $verification_token) {
         $mail->isHTML(false);
         $mail->Subject = 'Confirme ton inscription sur MoodMovies';
 
-        $lien = "http://localhost:8888/moodmovies/verify.php?token" . urlencode($verification_token);
+        $lien = "https://thibault-varga.be/projets/moodmovies/verify.php?token=" . urlencode($verification_token);
         $message = "Bonjour $username,\n\n";
         $message .= "Merci pour ton inscription sur MoodMovies !\n";
         $message .= "Pour activer ton compte, clique sur ce lien ou copie-colle dans ton navigateur :\n\n";

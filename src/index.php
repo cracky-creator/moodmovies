@@ -6,7 +6,7 @@ $userEmotions = $_GET['user_emotion'] ?? [];
 $userIntentions = $_GET['user_intention'] ?? [];
 $userStyles = $_GET['user_style'] ?? [];
 
-$films = getMatchingFilms($userEmotions, $userIntentions, $userStyles);
+$movies = getMatchingFilms($userEmotions, $userIntentions, $userStyles);
 
 $moviesByEmotion = getTopMoviesByEmotion($userIntentions, $userStyles);
 
@@ -18,7 +18,7 @@ include 'includes/open.php';
 
     <div class="movies_list">
 
-        <?php if(empty($films)) { ?>
+        <?php if(empty($movies)) { ?>
     
             <h1 class="suggestions__erreur">Désolé, aucun film ne correspond à votre mood.</h1>
     
@@ -28,13 +28,13 @@ include 'includes/open.php';
     
             <ul class="movies_list__content">
 
-                <?php foreach($films as $film) {?>
+                <?php foreach($movies as $movie) {?>
     
                     <li class="movies_list__content__movie">
     
-                        <a href="movie.php?id=<?php echo $film['id'] ?>&emotions=<?php echo implode(', ', $film['emotions'])?>&intentions=<?php echo implode(', ', $film['intentions']) ?>&styles=<?php echo implode(', ', $film['styles']) ?>"><img src="<?php echo $film['affiche_url']; ?>" alt="Affiche du film <?php echo $film['titre']; ?>." class="el__asset"></a>
+                        <a href="movie.php?id=<?php echo $movie['id'] ?>&emotions=<?php echo implode(', ', $movie['emotions'])?>&intentions=<?php echo implode(', ', $movie['intentions']) ?>&styles=<?php echo implode(', ', $movie['styles']) ?>"><img src="<?php echo $movie['affiche_url']; ?>" alt="Affiche du film <?php echo $movie['titre']; ?>." class="el__asset"></a>
     
-                        <a href="movie.php?id=<?php echo $film['id'] ?>&emotions=<?php echo implode(', ', $film['emotions'])?>&intentions=<?php echo implode(', ', $film['intentions']) ?>&styles=<?php echo implode(', ', $film['styles']) ?>"><h4 class="el__title"><?php echo $film['titre']; ?></h4></a>
+                        <a href="movie.php?id=<?php echo $movie['id'] ?>&emotions=<?php echo implode(', ', $movie['emotions'])?>&intentions=<?php echo implode(', ', $movie['intentions']) ?>&styles=<?php echo implode(', ', $movie['styles']) ?>"><h4 class="el__title"><?php echo $movie['titre']; ?></h4></a>
     
                     </li>
     
