@@ -12,67 +12,74 @@
 
 ?>
 
-<section>
+<section class="app_introduction">
 
-    <form action="index.php" method="get" class="mood_form">
+    <div class="app_introduction__content">
 
-        <fieldset class="mood_form__emotion">
+        <h1 class="app_title font-gradient">M<span class="double-o">oo</span>dMovies</h1>
 
-            <h3 class="mood_form__question">Quel est ton mood actuellement ?</h3>
+        
+        <form action="index.php" method="get" class="mood_form">
 
-            <select name="user_emotion[]" id="mood_form__emotion" class="mood_form__emotion">
+            <h4 class="mood_form__introduction">Bienvenue sur MoodMovies ! Décrivez nous votre mood, votre intention et le style de film que vous souhaitez découvrir afin de vous laissez surprendre par des films qui vous ressemblent.</h4>
+            
+            <fieldset class="mood_form__container">
 
-                <option value="emotion"><p>Emotion</p></option>
+                <div class="mood_form__el">
+        
+                    <select name="user_emotion[]" id="mood_form__emotion" class="mood_form__reponse box-gradient">
+        
+                        <option class="mood_form__reponse__el" value="emotion"><p>Emotion</p></option>
+        
+                    <?php foreach ($emotions as $emotion){ ?>
+        
+                        <option class="mood_form__reponse__el" id="user_emotion" value="<?php echo $emotion ?>"><p><?php echo $emotion ?></p></option>
+                        
+                    <?php } ?>
+        
+                    </select>
 
-            <?php foreach ($emotions as $emotion){ ?>
+                </div>
+    
+                <div class="mood_form__el">
+        
+                    <select name="user_intention[]" id="mood_form__intention" class="mood_form__reponse box-gradient">
+        
+                        <option class="mood_form__reponse__el" value="intention"><p>Intention</p></option>
+        
+                    <?php foreach ($intentions as $intention){ ?>
+        
+                        <option class="mood_form__reponse__el" id="user_intention" value="<?php echo $intention ?>"><p><?php echo $intention ?></p></option>
+                        
+                    <?php } ?>
+        
+                    </select>
+    
+                </div>
 
-                <option id="user_emotion" value="<?php echo $emotion ?>"><p><?php echo $emotion ?></p></option>
-                
-            <?php } ?>
+                <div class="mood_form__el">
+        
+                    <select name="user_style[]" id="mood_form__style" class="mood_form__reponse box-gradient">
+        
+                        <option class="mood_form__reponse__el" value="style"><p>style</p></option>
+        
+                    <?php foreach ($styles as $style){ ?>
+        
+                        <option class="mood_form__reponse__el" id="user_style" value="<?php echo $style ?>"><p><?php echo $style ?></p></option>
+                        
+                    <?php } ?>
+        
+                    </select>
+    
+                </div>
 
-            </select>
+            </fieldset>
+    
+            <button type="submit" class="mood_form__btn box-gradient"><p>Lancer la recherche</p></button>
+    
+        </form>
 
-        </fieldset>
-
-        <fieldset class="mood_form__intention">
-
-            <h3 class="mood_form__question">Pourquoi souhaites-tu regarder un film ?</h3>
-
-            <select name="user_intention[]" id="mood_form__intention" class="mood_form__intention">
-
-                <option value="intention"><p>Intention</p></option>
-
-            <?php foreach ($intentions as $intention){ ?>
-
-                <option id="user_intention" value="<?php echo $intention ?>"><p><?php echo $intention ?></p></option>
-                
-            <?php } ?>
-
-            </select>
-
-        </fieldset>
-
-        <fieldset class="mood_form__style">
-
-            <h3 class="mood_form__question">Quel style de film souhaites-tu découvrir ?</h3>
-
-            <select name="user_style[]" id="mood_form__style" class="mood_form__style">
-
-                <option value="style"><p>style</p></option>
-
-            <?php foreach ($styles as $style){ ?>
-
-                <option id="user_style" value="<?php echo $style ?>"><p><?php echo $style ?></p></option>
-                
-            <?php } ?>
-
-            </select>
-
-        </fieldset>
-
-        <button type="submit" class="mood_form__btn">Lancer la recherche</button>
-
-    </form>
+    </div>
 
 </section>
 

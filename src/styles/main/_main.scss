@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #2e2e44;
+    background-color: black;
     color: white;
 }
 
@@ -24,6 +24,7 @@ fieldset{
     padding: 23px;
     display: flex;
     column-gap: 23px;
+    padding: 0;
 }
 
 a{
@@ -37,10 +38,13 @@ h1, h2, h3{
 
 h1{
     font-size: $h1-fs-desktop;
+    color: rgb(189, 30, 30);
+    font-weight: 800;
 }
 
 h2{
     font-size: $h2-fs-desktop;
+    font-weight: 700;
 }
 
 h3{
@@ -59,4 +63,47 @@ p{
     font-size: $p-fs-desktop;
     color: white;
     font-family: Roboto;
+}
+
+.double-o{
+    letter-spacing:-0.15em;
+    margin-right: 13px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none; /* retire le contour */
+  box-shadow: none; /* retire les ombres de focus éventuelles */
+}
+
+button{
+    border: none;
+    background-color: rgb(189, 30, 30);
+    cursor: pointer;
+}
+
+.font-gradient{
+    background: linear-gradient(90deg, #6FB1FC, #457B9D, #A78BFA, #FFD166, #FF6B6B, #E63946, #F72585, #F77F00);
+    background-size: 700% 100%;      
+    background-clip: text;   
+    -webkit-text-fill-color: transparent;
+    animation: gradient-slide 8s linear infinite alternate;
+
+    @keyframes gradient-slide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; } 
+    }
+}
+
+.box-gradient{
+    background: linear-gradient(90deg, #6FB1FC, #457B9D, #A78BFA, #FFD166, #FF6B6B, #E63946, #F72585, #F77F00);
+    background-size: 700% 100%;
+    animation: gradient-slide 8s linear infinite alternate;
+
+    @keyframes gradient-slide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+    }
 }
