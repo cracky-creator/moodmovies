@@ -93,6 +93,12 @@ button {
   background-color: rgb(189, 30, 30);
   cursor: pointer;
 }
+button:hover {
+  scale: 1.1;
+}
+button:active {
+  scale: 0.9;
+}
 
 .font-gradient {
   background: linear-gradient(90deg, #6FB1FC, #457B9D, #A78BFA, #FFD166, #FF6B6B, #E63946, #F72585, #F77F00);
@@ -131,9 +137,6 @@ button {
   justify-content: center;
   height: 100vh;
 }
-.app_introduction__content {
-  max-width: 800px;
-}
 .app_introduction__content .app_title {
   margin-bottom: 72px;
   text-align: center;
@@ -142,15 +145,21 @@ button {
 .mood_form {
   display: flex;
   flex-direction: column;
-  row-gap: 25.452px;
+  align-items: center;
+  row-gap: 50.904px;
+}
+.mood_form__introduction {
+  max-width: 800px;
 }
 .mood_form__container {
   display: flex;
-  -moz-column-gap: 25.452px;
-       column-gap: 25.452px;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
 }
 .mood_form__el {
-  width: 33.33%;
+  min-width: 250px;
+  width: 300px;
 }
 .mood_form__reponse {
   border: 0;
@@ -170,7 +179,6 @@ button {
   align-self: center;
   padding: 9px 18px;
   border-radius: 9px;
-  margin-top: 72px;
 }
 .mood_form__btn p {
   display: inline-block;

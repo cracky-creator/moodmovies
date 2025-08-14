@@ -29,7 +29,7 @@
         
                     <select name="user_emotion[]" id="mood_form__emotion" class="mood_form__reponse box-gradient">
         
-                        <option class="mood_form__reponse__el" value="emotion"><p>Emotion</p></option>
+                        <option class="mood_form__reponse__el" value="emotion"><p>Mood</p></option>
         
                     <?php foreach ($emotions as $emotion){ ?>
         

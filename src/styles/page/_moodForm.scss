@@ -5,7 +5,6 @@
     height: 100vh;
 
     &__content{
-        max-width: 800px;
 
         .app_title{
             margin-bottom: $h1-margin-desktop;
@@ -17,15 +16,23 @@
 .mood_form{
     display: flex;
     flex-direction: column;
-    row-gap: $h4-margin-desktop;
+    align-items: center;
+    row-gap: $h2-margin-desktop;
+
+    &__introduction{
+        max-width: 800px;
+    }
 
     &__container{
         display: flex;
-        column-gap: $h4-margin-desktop;
+        flex-wrap: wrap;
+        gap: $p-margin-desktop;
+        justify-content: center;
     }
 
     &__el{
-        width: 33.33%;
+        min-width: 250px;
+        width: 300px;
     }
 
     &__reponse{
@@ -48,7 +55,7 @@
         align-self: center;
         padding: calc($p-fs-desktop / 2) $p-margin-desktop;
         border-radius: 9px;
-        margin-top: $h1-margin-desktop;
+        // margin-top: $h1-margin-desktop;
 
         p{
             display: inline-block;
