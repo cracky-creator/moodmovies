@@ -20,7 +20,7 @@
 
         if($movie['id'] == $movieID){ ?>
             
-            <div class="movie">
+            <div class="movie" data-film-id="<?php echo $movie['id'] ; ?>">
 
                 <img src="<?php echo $movie['affiche_url']; ?>" alt="Affiche du film <?php echo $movie['titre']; ?>." class="movie__asset">
 
@@ -40,6 +40,14 @@
                     <li class="movie__list__el"><p>Avis du grand public : <?php echo $movie['note']; ?> / 10</p></li>
 
                 </ul>
+
+                <div class="stars">
+                    <span data-value="1">&#9734;</span>
+                    <span data-value="2">&#9734;</span>
+                    <span data-value="3">&#9734;</span>
+                </div>
+
+                <button class="dislike">👎 Pas aimé</button>
 
             </div>
 

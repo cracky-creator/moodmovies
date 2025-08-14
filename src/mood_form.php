@@ -25,9 +25,9 @@
             
             <fieldset class="mood_form__container">
 
-                <div class="mood_form__el">
+                <div class="mood_form__el box-gradient">
         
-                    <select name="user_emotion[]" id="mood_form__emotion" class="mood_form__reponse box-gradient">
+                    <select name="user_emotion[]" id="mood_form__emotion" class="mood_form__reponse">
         
                         <option class="mood_form__reponse__el" value="emotion"><p>Mood</p></option>
         
@@ -41,9 +41,9 @@
 
                 </div>
     
-                <div class="mood_form__el">
+                <div class="mood_form__el box-gradient">
         
-                    <select name="user_intention[]" id="mood_form__intention" class="mood_form__reponse box-gradient">
+                    <select name="user_intention[]" id="mood_form__intention" class="mood_form__reponse">
         
                         <option class="mood_form__reponse__el" value="intention"><p>Intention</p></option>
         
@@ -57,9 +57,9 @@
     
                 </div>
 
-                <div class="mood_form__el">
+                <div class="mood_form__el box-gradient">
         
-                    <select name="user_style[]" id="mood_form__style" class="mood_form__reponse box-gradient">
+                    <select name="user_style[]" id="mood_form__style" class="mood_form__reponse">
         
                         <option class="mood_form__reponse__el" value="style"><p>style</p></option>
         

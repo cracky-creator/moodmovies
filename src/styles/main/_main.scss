@@ -78,6 +78,18 @@ button:focus {
   box-shadow: none; /* retire les ombres de focus éventuelles */
 }
 
+select{
+    appearance: none;           
+    -webkit-appearance: none;   
+    -moz-appearance: none;
+    border: 0;
+    cursor: pointer;
+    font-size: $p-fs-desktop;
+    font-family: Quicksand;
+    font-weight: 600;
+    background-color: transparent;
+}
+
 button{
     border: none;
     background-color: rgb(189, 30, 30);
