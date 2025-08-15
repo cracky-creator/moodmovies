@@ -2,22 +2,47 @@
 include 'includes/open.php'; 
 ?>
 
-<h2>Créer un compte</h2>
+<section class="register">
 
-<form action="register_process.php" method="POST">
+    <div class="register__content">
 
-    <label for="username">Nom d'utilisateur :</label>
-    <input type="text" id="username" name="username" required><br><br>
+        <form action="register_process.php" method="POST" class="form register_form">
 
-    <label for="email">Adresse e-mail :</label>
-    <input type="email" id="email" name="email" required><br><br>
+            <h2 class="register_form__title font-gradient">Créer votre compte</h2>
+        
+            <fieldset class="form__content register_form__content">
+        
+                <div class="form__content__el register_form__content__el">
+        
+                    <label for="username"><h4 class="font-gradient">Nom d'utilisateur</h4></label>
+                    <input type="text" id="username" name="username" required>
+        
+                </div>
+        
+                <div class="form__content__el register_form__content__el">
+        
+                    <label for="email"><h4 class="font-gradient">Adresse e-mail</h4></label>
+                    <input type="email" id="email" name="email" required>
+        
+                </div>
+        
+                <div class="form__content__el register_form__content__el">
+        
+                    <label for="password"><h4 class="font-gradient">Mot de passe</h4></label>
+                    <input type="password" id="password" name="password" required>
+        
+                </div>
+        
+            </fieldset>
+        
+        
+            <button type="submit" class="form__btn register_form__btn box-gradient"><p>S'inscrire</p></button>
+        
+        </form>
 
-    <label for="password">Mot de passe :</label>
-    <input type="password" id="password" name="password" required><br><br>
+    </div>
 
-    <button type="submit">S'inscrire</button>
-
-</form>
+</section>
 
 <?php 
 include 'includes/close.php'; 
