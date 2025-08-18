@@ -80,6 +80,20 @@ function getFilmsListe() {
             $stmt->execute([$film_id]);
             $film_styles = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+            // Note et dislike de l'utilisateur
+            $user_note = 0;
+            $user_disliked = 0;
+            if ($userId) {
+                $stmtRating = $pdo->prepare("SELECT note, disliked FROM film_notes WHERE film_id = ? AND user_id = ? LIMIT 1");
+                $stmtRating->execute([$film_id, $userId]);
+                $rating = $stmtRating->fetch(PDO::FETCH_ASSOC);
+
+                if ($rating) {
+                    $user_note = (int)$rating['note'];
+                    $user_disliked = (int)$rating['disliked'];
+                }
+            }
+
             // Stocke toutes les infos
             $films_liste[] = [
                 'id' => $film['id'],
@@ -92,9 +106,12 @@ function getFilmsListe() {
                 'duree' => $film['duree'],
                 'note' => $film['note'],
                 'affiche_url' => $film['affiche_url'],
+                'backdrop_url' => $film['backdrop_url'],
                 'emotions' => $film_emotions,
                 'intentions' => $film_intentions,
-                'styles' => $film_styles
+                'styles' => $film_styles,
+                'user_note' => $user_note,         
+                'user_disliked' => $user_disliked,
             ];
         }
 
@@ -381,7 +398,7 @@ function getTopMoviesByEmotion(array $userIntentions, array $userStyles): array 
 }
 
 // charges php mailer 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
