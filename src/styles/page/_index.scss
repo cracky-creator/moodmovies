@@ -5,6 +5,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     &::after{
         content: "";
@@ -43,6 +46,8 @@
             border-radius: calc($p-margin-desktop / 2);
             flex: 0 0 auto;
             align-self: flex-start;
+            display: flex;
+            gap: 5px;
 
             &:hover{
                 scale: 1.1;
@@ -50,6 +55,11 @@
 
             &:active{
                 scale: 0.9;
+            }
+
+            svg {
+                width: 20px;
+                aspect-ratio: 1 / 1;
             }
         }
 

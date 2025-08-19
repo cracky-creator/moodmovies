@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Chercher l'utilisateur par email (on récupère aussi verified)
-    $stmt = $pdo->prepare("SELECT id, username, password_hash, is_verified FROM users WHERE email = ?");
+    $stmt = $pdo->prepare("SELECT id, username, email, password_hash, is_verified FROM users WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Connexion réussie : enregistrer les infos en session
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
+    $_SESSION['email']     = $user['email'];
 
     // Mise à jour de last_login
     $stmt = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
