@@ -46,7 +46,7 @@ function validerNote($note) {
     return is_numeric($note) && floatval($note) != 0;
 }
 
-function getFilmsListe() {
+function getFilmsListe($userId = 0) {
     try {
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -83,14 +83,22 @@ function getFilmsListe() {
             // Note et dislike de l'utilisateur
             $user_note = 0;
             $user_disliked = 0;
+            $date_note = null;
+
             if ($userId) {
-                $stmtRating = $pdo->prepare("SELECT note, disliked FROM film_notes WHERE film_id = ? AND user_id = ? LIMIT 1");
+                $stmtRating = $pdo->prepare("
+                    SELECT note, disliked, date_note 
+                    FROM film_notes 
+                    WHERE film_id = ? AND user_id = ? 
+                    LIMIT 1
+                ");
                 $stmtRating->execute([$film_id, $userId]);
                 $rating = $stmtRating->fetch(PDO::FETCH_ASSOC);
 
                 if ($rating) {
                     $user_note = (int)$rating['note'];
                     $user_disliked = (int)$rating['disliked'];
+                    $date_note = $rating['date_note']; // récupère la date
                 }
             }
 
@@ -112,6 +120,7 @@ function getFilmsListe() {
                 'styles' => $film_styles,
                 'user_note' => $user_note,         
                 'user_disliked' => $user_disliked,
+                'date_note' => $date_note
             ];
         }
 
@@ -398,7 +407,7 @@ function getTopMoviesByEmotion(array $userIntentions, array $userStyles): array 
 }
 
 // charges php mailer 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

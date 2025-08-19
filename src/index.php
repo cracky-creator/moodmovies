@@ -14,6 +14,33 @@ include 'includes/open.php';
 
 ?>
 
+<?php if(!empty($movies)) { 
+    
+    $firstMovie = $movies[0];?>
+
+<section class="top_suggestion" style="background-image: url('<?php  echo $firstMovie['backdrop_url']; ?>');">
+
+    
+    <div class="top_suggestion__content">
+
+        <div class="top_suggestion__movie">
+
+            <h2 class="movie__title"><?php echo $firstMovie['titre'] ?></h2>
+
+            <p class="movie__recommendation font-gradient">Top recommendation</p>
+
+            <p class="movie__synopsis"><?php echo $firstMovie['synopsis'] ?></p>
+
+            <a href="movie.php?id=<?php echo $firstMovie['id'] ?>&emotions=<?php echo implode(', ', $firstMovie['emotions'])?>&intentions=<?php echo implode(', ', $firstMovie['intentions']) ?>&styles=<?php echo implode(', ', $firstMovie['styles']) ?>" class="movie__link box-gradient"><span>En savoir +</span></a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<?php } ?>
+
 <section class="suggestions">
 
     <div class="movies_list">
@@ -24,7 +51,7 @@ include 'includes/open.php';
     
         <?php } else { ?>
 
-            <h3 class="movies_list__title">Recommandations d'après votre mood</h3>
+            <h3 class="movies_list__title">Recommandations de MoodMovies</h3>
     
             <ul class="movies_list__content">
 

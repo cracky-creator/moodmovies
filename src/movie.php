@@ -1,5 +1,6 @@
 <?php
-
+    session_start();
+    
     include 'functions/functions.php';
 
     include 'includes/open.php';
@@ -11,24 +12,9 @@
     $movieIntentions = $_GET['intentions'];
     $movieStyles = $_GET['styles'];
 
-    $movies = getFilmsListe();
-    $matchingMovies = getMatchingFilmsByMovieID($movieID);
-
     $userId = $_SESSION['user_id'] ?? 0; // ID de l'utilisateur connecté
-
-    $userNotes = [];
-    if ($userId) {
-        $stmt = $pdo->prepare("SELECT film_id, note, disliked FROM film_notes WHERE user_id = ?");
-        $stmt->execute([$userId]);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($results as $r) {
-            $userNotes[$r['film_id']] = [
-                'note' => $r['note'],
-                'disliked' => $r['disliked']
-            ];
-        }
-    }
+    $movies = getFilmsListe($userId);
+    $matchingMovies = getMatchingFilmsByMovieID($movieID);
 
 ?>
 
@@ -36,11 +22,11 @@
 
         $movieActorsArray = explode(",", $movie['acteurs']);
 
-        if($movie['id'] == $movieID){ ?>
+        if($movie['id'] == $movieID){?>
 
-            <section class="movie_show" style="background-image: url('<?= htmlspecialchars($movie['backdrop_url']) ?>');">
+            <section class="movie_show" style="background-image: url('<?php  echo $movie['backdrop_url']; ?>');">
                 
-                <div class="movie" data-film-id="<?php echo $movie['id'] ; ?> " data-note="<?= $userNotes[$movie['id']]['note'] ?? 0 ?>" data-disliked="<?= $userNotes[$movie['id']]['disliked'] ?? 0 ?>">
+                <div class="movie" data-film-id="<?php echo $movie['id'] ; ?> " data-note="<?php echo $movie['user_note'] ; ?>" data-disliked="<?php echo $movie['user_disliked'] ; ?>">
                     
                     <ul class="movie__list">
 
