@@ -17,6 +17,10 @@
         position: relative;
     }
 
+    &__logo{
+        font-family: Quicksand;
+    }
+
     &__links{
         display: flex;
         gap: $h3-margin-desktop;
@@ -64,7 +68,7 @@
     }
 
     &__user_profile{
-        height: 40px;
+        height: 45px;
         aspect-ratio: 1 / 1;
         border-radius: 100px;
         background-color:rgb(40, 40, 40);
@@ -94,11 +98,15 @@
             padding: $h3-margin-desktop;
             border-radius: calc($h3-margin-desktop / 2);
             position: absolute;
-            top: calc(100% + 5px);
+            top: calc(100% + calc($p-margin-desktop / 2));
             right: 0;
             display: none;
             flex-direction: column;
             gap: $p-margin-desktop;
+
+            p{
+                white-space: nowrap;
+            }
 
             &.active{
                 display: flex;

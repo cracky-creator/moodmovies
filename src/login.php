@@ -1,5 +1,10 @@
 <?php 
 include 'includes/open.php'; 
+
+session_start();
+$success = $_SESSION['success'] ?? '';
+unset($_SESSION['success']);
+
 ?>
 
 <section class="login">
@@ -9,6 +14,12 @@ include 'includes/open.php';
         <form action="login_process.php" method="POST" class="form">
         
             <h2 class="form__title font-gradient">Se connecter</h2>
+
+            <?php if(!empty($success)) { ?>
+
+                <p class="register__success"> <?php echo $success; ?></p>
+
+            <?php } ?>
         
             <fieldset class="form__content">
         

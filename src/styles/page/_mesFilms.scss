@@ -120,6 +120,15 @@
         }
     }
 
+    .movie__link{
+        flex: 0 0 auto;
+        align-self: flex-start;
+        display: flex;
+        gap: $p-margin-desktop;
+        padding: calc($p-margin-desktop / 2);
+        border-radius: calc($p-margin-desktop / 2);
+    }
+
     .movie__links{
         flex: 0 0 auto;
         align-self: flex-start;

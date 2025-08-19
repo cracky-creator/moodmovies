@@ -1,4 +1,11 @@
 'use strict';
+const navUserProfile = document.querySelector('.nav__user_profile');
+const userProfileModal = document.querySelector('.user_profile__modal');
+
+navUserProfile.addEventListener('click', () => {
+    navUserProfile.classList.toggle('active');
+    userProfileModal.classList.toggle('active');
+});
 
 document.querySelectorAll('.movie').forEach(movieDiv => {
     const filmId = movieDiv.dataset.filmId;

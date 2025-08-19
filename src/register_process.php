@@ -1,59 +1,68 @@
 <?php
 
-require 'config/config.php'; // Fichier de connexion à ta base de données
-
+session_start();
+require 'config/config.php'; // connexion à la base
 require 'functions/functions.php';
 
-// Récupération des données du formulaire
-$username = trim($_POST['username']);
-$email = trim($_POST['email']);
-$password = $_POST['password'];
+$errorUsername = '';
+$errorEmail = '';
+$errorFormat = '';
+$success = '';
 
-// 1. Vérification du format de l'email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("refresh:5;url=register.php");
-    echo "L'adresse email n'est pas valide. Redirection vers inscription dans 5s.";
-    exit();
-}
+// Vérifie si le formulaire est soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $email    = trim($_POST['email']);
+    $password = $_POST['password'];
 
-// 2. Vérification si le nom d'utilisateur existe déjà
-$sql = "SELECT id FROM users WHERE username = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$username]);
-if ($stmt->rowCount() > 0) {
-    header("refresh:5;url=register.php");
-    echo "Ce nom d'utilisateur est déjà pris. Choisis-en un autre. Redirection vers inscription dans 5s.";
-    exit();
-}
-
-// 3. Vérification si l'email est déjà utilisé
-$sql = "SELECT id FROM users WHERE email = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$email]);
-if ($stmt->rowCount() > 0) {
-    header("refresh:5;url=register.php");
-    echo "Cet email est déjà utilisé. Essaie avec un autre. Redirection vers inscription dans 5s.";
-    exit();
-}
-
-// 4. Hashage du mot de passe pour la sécurité
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-// --- NOUVEAU : Génération du token de vérification ---
-$verification_token = bin2hex(random_bytes(16)); // token sécurisé, 32 caractères hexadécimaux
-
-// 5. Insertion dans la base avec token et is_verified à 0
-$sql = "INSERT INTO users (username, email, password_hash, is_verified, verification_token) VALUES (?, ?, ?, 0, ?)";
-$stmt = $pdo->prepare($sql);
-
-if ($stmt->execute([$username, $email, $hashedPassword, $verification_token])) {
-    if (envoyerEmailVerification($email, $username, $verification_token)) {
-        echo "Inscription réussie ! Un email de confirmation a été envoyé à $email.";
-    } else {
-        echo "Inscription réussie, mais l'envoi de l'email a échoué.";
+    // --- 1. Vérification du format email ---
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errorFormat = "L'adresse email n'est pas valide.";
     }
-} else {
-    echo "Erreur lors de l'inscription.";
+
+    // --- 2. Vérification unicité username ---
+    $sql = "SELECT id FROM users WHERE username = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$username]);
+    if ($stmt->rowCount() > 0) {
+        $errorUsername = "Ce nom d'utilisateur est déjà pris. Choisis-en un autre.";
+    }
+
+    // --- 3. Vérification unicité email ---
+    $sql = "SELECT id FROM users WHERE email = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+    if ($stmt->rowCount() > 0) {
+        $errorEmail = "Cette adresse email est déjà utilisée. Essaie avec une autre.";
+    }
+
+    // --- 4. Si pas d'erreur, insertion ---
+    if (empty($errorUsername) && empty($errorFormat) && empty($errorEmail)) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $verification_token = bin2hex(random_bytes(16)); // token 32 caractères
+
+        $sql = "INSERT INTO users (username, email, password_hash, is_verified, verification_token) 
+                VALUES (?, ?, ?, 0, ?)";
+        $stmt = $pdo->prepare($sql);
+
+        if ($stmt->execute([$username, $email, $hashedPassword, $verification_token])) {
+            if (envoyerEmailVerification($email, $username, $verification_token)) {
+                $success = "Inscription réussie ! Un email de confirmation a été envoyé à $email.";
+            } else {
+                $success = "Inscription réussie, mais l'envoi de l'email a échoué.";
+            }
+        } else {
+            $error = "Erreur lors de l'inscription.";
+        }
+    }
 }
+
+// On stocke le message dans la session et on redirige vers register.php
+$_SESSION['errorUsername'] = $errorUsername;
+$_SESSION['errorEmail'] = $errorEmail;
+$_SESSION['errorFormat'] = $errorFormat;
+$_SESSION['success'] = $success;
+header('Location: register.php');
+exit();
 
 ?>

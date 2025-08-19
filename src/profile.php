@@ -111,7 +111,7 @@ if ($lastNotedMovie) {
                     
                     <p><?php echo 'Dernier film noté le ' . $LastNoteDate; ?></p>
                 
-                    <a href="movie.php?id=<?= $$lastNotedMovie['id'] ?>&emotions=<?= implode(', ', $$lastNotedMovie['emotions']) ?>&intentions=<?= implode(', ', $$lastNotedMovie['intentions']) ?>&styles=<?= implode(', ', $$lastNotedMovie['styles']) ?>" class="movie__link box-gradient"><span>Changer la note</span></a>
+                    <a href="movie.php?id=<?= $lastNotedMovie['id'] ?>&emotions=<?= implode(', ', $lastNotedMovie['emotions']) ?>&intentions=<?= implode(', ', $lastNotedMovie['intentions']) ?>&styles=<?= implode(', ', $lastNotedMovie['styles']) ?>" class="movie__link box-gradient"><span>Changer la note</span></a>
 
             <?php } else { ?>
 

@@ -44,13 +44,13 @@
 
             <div class="nav__user_profile">
 
-                <h4 class="user_profile__title">C</h4>
+                <h4 class="user_profile__title"><?php echo ucfirst($_SESSION['username']); ?></h4>
 
                 <div class="user_profile__modal">
 
-                    <p class="user__pseudo">Pseudo : <?php echo $_SESSION['username']; ?></p>
+                    <p class="user__pseudo"><?php echo $_SESSION['username']; ?></p>
 
-                    <p class="user__mail">Adresse Email : <?php echo $_SESSION['email']; ?></p>
+                    <p class="user__mail"><?php echo $_SESSION['email']; ?></p>
 
                 </div>
 

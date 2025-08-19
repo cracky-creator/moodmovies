@@ -172,6 +172,9 @@ button:active {
   align-items: center;
   position: relative;
 }
+.nav__logo {
+  font-family: Quicksand;
+}
 .nav__links {
   display: flex;
   gap: 36px;
@@ -210,7 +213,7 @@ button:active {
   scale: 0.9;
 }
 .nav__user_profile {
-  height: 40px;
+  height: 45px;
   aspect-ratio: 1/1;
   border-radius: 100px;
   background-color: rgb(40, 40, 40);
@@ -238,11 +241,14 @@ button:active {
   padding: 36px;
   border-radius: 18px;
   position: absolute;
-  top: calc(100% + 5px);
+  top: calc(100% + 9px);
   right: 0;
   display: none;
   flex-direction: column;
   gap: 18px;
+}
+.nav__user_profile .user_profile__modal p {
+  white-space: nowrap;
 }
 .nav__user_profile .user_profile__modal.active {
   display: flex;
@@ -943,6 +949,14 @@ form::after {
   mask-position: center;
   mask-size: contain;
   animation: gradientAnim 8s linear infinite alternate;
+}
+.last_note .movie__link {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  display: flex;
+  gap: 18px;
+  padding: 9px;
+  border-radius: 9px;
 }
 .last_note .movie__links {
   flex: 0 0 auto;

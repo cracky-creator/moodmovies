@@ -20,7 +20,8 @@ if (!$user) {
 
 // Vérifier si déjà validé
 if ($user['is_verified'] == 1) {
-    echo "Votre compte est déjà activé. <a href='login.php'>Connectez-vous</a>";
+    $_SESSION['success'] = "Votre compte est déjà activé, vous pouvez vous connecter.";
+    header("Location: login.php");
     exit;
 }
 
@@ -28,5 +29,8 @@ if ($user['is_verified'] == 1) {
 $stmt = $pdo->prepare("UPDATE users SET is_verified = 1, verification_token = NULL WHERE id = ?");
 $stmt->execute([$user['id']]);
 
-echo "✅ Votre compte a été activé avec succès ! <a href='login.php'>Cliquez ici pour vous connecter</a>";
+// Message de succès en session
+$_SESSION['success'] = "✅ Votre compte a été activé avec succès, vous pouvez vous connecter.";
+header("Location: login.php");
+exit;
 ?>
