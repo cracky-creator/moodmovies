@@ -163,6 +163,13 @@ button:active {
   top: 0;
   z-index: 1000;
   background: linear-gradient(black 60%, rgba(0, 0, 0, 0.75) 70%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0.25) 90%, rgba(0, 0, 0, 0) 100%);
+  transition: 0.3s;
+}
+.nav.visible {
+  transform: translateY(0);
+}
+.nav.hidden {
+  transform: translateY(-100%);
 }
 .nav__content {
   width: 100%;

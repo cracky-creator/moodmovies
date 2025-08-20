@@ -7,6 +7,15 @@
     top: 0;
     z-index: 1000;
     background: linear-gradient(black 60%, rgba(0, 0, 0, 0.75) 70%, rgba(0, 0, 0, 0.50) 80%, rgba(0, 0, 0, 0.25) 90%, rgba(0, 0, 0, 0) 100%);
+    transition: 0.3s;
+
+    &.visible{
+        transform: translateY(0);
+    }
+
+    &.hidden{
+        transform: translateY(-100%);
+    }
 
     &__content{
         width: 100%;

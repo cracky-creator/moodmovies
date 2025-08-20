@@ -8,9 +8,11 @@ window.document.addEventListener('scroll', scrollListener);
 
 function scrollListener(){
   if(lastScrollValue > window.scrollY){
-    gsap.to('.nav', {transform: 'translateY(0)', duration: 0.3,});
+    nav.classList.add('visible');
+    nav.classList.remove('hidden');
   }else{
-    gsap.to('.nav', {transform: 'translateY(-108px)', duration: 0.3,});
+    nav.classList.remove('visible');
+    nav.classList.add('hidden');
   }
   lastScrollValue = window.scrollY;
 };
