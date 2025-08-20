@@ -41,6 +41,31 @@
             color: black;
         }
     }
+
+    &__link{
+
+        &:hover{
+            text-decoration: underline 2px solid white;
+            text-underline-offset: 5px;
+        }
+
+        &:active{
+            scale: 0.9;
+        }
+
+        &:visited{
+            color: rgb(195, 195, 195);
+        }
+
+        span{
+            color: white;
+        }
+    }
+
+    .connexion_link{
+        flex: 0 0 auto;
+        align-self: center;
+    }
 }
 
 form::before {

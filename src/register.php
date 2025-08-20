@@ -22,7 +22,7 @@ unset($_SESSION['errorUsername'], $_SESSION['errorFormat'], $_SESSION['errorEmai
 
                 <?php if (!empty($success)) { ?>
 
-                    <p class="register__success"> <?php echo $success; ?></p>
+                    <p class="alert_success"> <?php echo $success; ?></p>
 
                 <?php } ?>
         
@@ -30,7 +30,8 @@ unset($_SESSION['errorUsername'], $_SESSION['errorFormat'], $_SESSION['errorEmai
                     <?php
                     // Affichage des messages d'erreur ou de succès
                     if (!empty($errorUsername)) { ?>
-                        <p class="register__error"> <?php echo $errorUsername; ?></p>
+                    
+                        <p class="alert_error"> <?php echo $errorUsername; ?></p>
 
                     <?php } ?>
 
@@ -45,11 +46,11 @@ unset($_SESSION['errorUsername'], $_SESSION['errorFormat'], $_SESSION['errorEmai
                     
                     if (!empty($errorFormat)) { ?>
 
-                        <p class="register__error"> <?php echo $errorFormat; ?></p>
+                        <p class="alert_error"> <?php echo $errorFormat; ?></p>
 
                     <?php } else if (!empty($errorEmail)) { ?>
 
-                        <p class="register__error"> <?php echo $errorEmail; ?></p>
+                        <p class="alert_error"> <?php echo $errorEmail; ?></p>
 
                     <?php } ?>
 
@@ -66,6 +67,8 @@ unset($_SESSION['errorUsername'], $_SESSION['errorFormat'], $_SESSION['errorEmai
             </fieldset>
         
             <button type="submit" class="form__btn register_form__btn box-gradient"><p>S'inscrire</p></button>
+
+            <a href="login.php" class="form__link connexion_link"><span>Déjà inscrit ? Connectez vous ici</span></a>
         
         </form>
 

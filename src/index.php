@@ -1,10 +1,19 @@
 <?php
+session_start();
 include 'functions/functions.php';
 include_once 'config/config.php';
 
-$userEmotions = $_GET['user_emotion'] ?? [];
-$userIntentions = $_GET['user_intention'] ?? [];
-$userStyles = $_GET['user_style'] ?? [];
+// Si l'utilisateur a soumis le formulaire -> on met à jour la session
+if (isset($_GET['user_emotion'], $_GET['user_intention'], $_GET['user_style'])) {
+    $_SESSION['user_emotion'] = $_GET['user_emotion'];
+    $_SESSION['user_intention'] = $_GET['user_intention'];
+    $_SESSION['user_style'] = $_GET['user_style'];
+}
+
+// On lit en priorité la session
+$userEmotions   = $_SESSION['user_emotion']   ?? [];
+$userIntentions = $_SESSION['user_intention'] ?? [];
+$userStyles     = $_SESSION['user_style']     ?? [];
 
 $movies = getMatchingFilms($userEmotions, $userIntentions, $userStyles);
 

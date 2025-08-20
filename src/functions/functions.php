@@ -407,7 +407,7 @@ function getTopMoviesByEmotion(array $userIntentions, array $userStyles): array 
 }
 
 // charges php mailer 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -448,6 +448,39 @@ function envoyerEmailVerification($email, $username, $verification_token) {
         return true;
     } catch (Exception $e) {
         error_log("Erreur envoi mail: " . $mail->ErrorInfo);
+        return false;
+    }
+}
+
+function envoyerEmailResetPassword($email, $token) {
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = EMAIL_ADMIN;
+        $mail->Password   = APP_PASSWORD;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+
+        $mail->setFrom('no-reply@moodmovies.com', 'MoodMovies');
+        $mail->addAddress($email);
+
+        $mail->isHTML(false);
+        $mail->Subject = 'Réinitialisation de mot de passe';
+
+        $lien = "https://thibault-varga.be/projets/moodmovies/reset_password.php?token=" . urlencode($token);
+        $message = "Bonjour,\n\n";
+        $message .= "Cliquez sur ce lien pour réinitialiser votre mot de passe :\n$lien\n\n";
+        $message .= "Ce lien est valable 1h.\n\n";
+        $message .= "Si vous n'avez rien demandé, ignorez ce mail.";
+
+        $mail->Body = $message;
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        error_log("Erreur envoi mail reset: " . $mail->ErrorInfo);
         return false;
     }
 }

@@ -1,12 +1,16 @@
 <?php
+    session_start();
 
     include 'functions/functions.php';
 
     $emotions = getEmotionsList();
-
     $intentions = getIntentionsList();
-
     $styles = getStylesList();
+
+    // Récupérer valeurs en session si elles existent
+    $userEmotions   = $_SESSION['user_emotion']   ?? [];
+    $userIntentions = $_SESSION['user_intention'] ?? [];
+    $userStyles     = $_SESSION['user_style']     ?? [];
 
     include 'includes/open.php';
 
@@ -33,7 +37,7 @@
         
                     <?php foreach ($emotions as $emotion){ ?>
         
-                        <option class="mood_form__reponse__el" id="user_emotion" value="<?php echo $emotion ?>"><p><?php echo $emotion ?></p></option>
+                        <option class="mood_form__reponse__el" id="user_emotion" value="<?php echo $emotion; ?>" <?php if(in_array($emotion, $userEmotions)) echo 'selected'; ?>><p><?php echo $emotion; ?></p></option>
                         
                     <?php } ?>
         
@@ -49,7 +53,7 @@
         
                     <?php foreach ($intentions as $intention){ ?>
         
-                        <option class="mood_form__reponse__el" id="user_intention" value="<?php echo $intention ?>"><p><?php echo $intention ?></p></option>
+                        <option class="mood_form__reponse__el" id="user_intention" value="<?php echo $intention; ?>" <?php if(in_array($intention, $userIntentions)) echo 'selected'; ?>><p><?php echo $intention; ?></p></option>
                         
                     <?php } ?>
         
@@ -65,7 +69,7 @@
         
                     <?php foreach ($styles as $style){ ?>
         
-                        <option class="mood_form__reponse__el" id="user_style" value="<?php echo $style ?>"><p><?php echo $style ?></p></option>
+                        <option class="mood_form__reponse__el" id="user_style" value="<?php echo $style; ?>" <?php if(in_array($style, $userStyles)) echo 'selected';?>><p><?php echo $style; ?></p></option>
                         
                     <?php } ?>
         

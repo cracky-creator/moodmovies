@@ -1,11 +1,14 @@
 'use strict';
 const navUserProfile = document.querySelector('.nav__user_profile');
-const userProfileModal = document.querySelector('.user_profile__modal');
 
-navUserProfile.addEventListener('click', () => {
-    navUserProfile.classList.toggle('active');
-    userProfileModal.classList.toggle('active');
-});
+if(navUserProfile){
+    const userProfileModal = document.querySelector('.user_profile__modal');
+    
+    navUserProfile.addEventListener('click', () => {
+        navUserProfile.classList.toggle('active');
+        userProfileModal.classList.toggle('active');
+    });
+}
 
 document.querySelectorAll('.movie').forEach(movieDiv => {
     const filmId = movieDiv.dataset.filmId;
@@ -88,13 +91,16 @@ document.querySelectorAll('.movie').forEach(movieDiv => {
 
 // supression de la derniere ligne de la matching list si elle n'est pas complete
 const MatchingMovieGrid = document.querySelector('.matching__list');
-const MatchingMovieItems = Array.from(MatchingMovieGrid.children);
 
-const cols = getComputedStyle(MatchingMovieGrid).gridTemplateColumns.split(" ").length;
+if (MatchingMovieGrid) { 
+    const MatchingMovieItems = Array.from(MatchingMovieGrid.children);
 
-const remainder = MatchingMovieItems.length % cols;
-if (remainder !== 0) {
-  for (let i = 0; i < remainder; i++) {
-    MatchingMovieItems[MatchingMovieItems.length - 1 - i].style.display = "none";
-  }
+    const cols = getComputedStyle(MatchingMovieGrid).gridTemplateColumns.split(" ").length;
+
+    const remainder = MatchingMovieItems.length % cols;
+    if (remainder !== 0) {
+        for (let i = 0; i < remainder; i++) {
+            MatchingMovieItems[MatchingMovieItems.length - 1 - i].style.display = "none";
+        }
+    }
 }
