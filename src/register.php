@@ -1,8 +1,6 @@
 <?php 
 include 'includes/open.php'; 
 
-session_start();
-
 $errorUsername = $_SESSION['errorUsername'] ?? '';
 $errorFormat = $_SESSION['errorFormat'] ?? '';
 $errorEmail = $_SESSION['errorEmail'] ?? '';

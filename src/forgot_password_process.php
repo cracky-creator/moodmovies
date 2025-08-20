@@ -1,6 +1,7 @@
 <?php
 require 'config/config.php';
 require 'functions/functions.php';
+session_start();
 
 if (!isset($_POST['email'])) {
     header("Location: forgot_password.php");

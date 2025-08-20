@@ -1,4 +1,23 @@
 'use strict';
+
+// sticky nav
+let lastScrollValue = 0;
+const nav = document.querySelector('.nav');
+
+window.document.addEventListener('scroll', scrollListener);
+
+function scrollListener(){
+  if(lastScrollValue > window.scrollY){
+    gsap.to('.nav', {transform: 'translateY(0)', duration: 0.3,});
+  }else{
+    gsap.to('.nav', {transform: 'translateY(-108px)', duration: 0.3,});
+  }
+  lastScrollValue = window.scrollY;
+};
+
+
+
+
 const navUserProfile = document.querySelector('.nav__user_profile');
 
 if(navUserProfile){
@@ -9,6 +28,9 @@ if(navUserProfile){
         userProfileModal.classList.toggle('active');
     });
 }
+
+
+
 
 document.querySelectorAll('.movie').forEach(movieDiv => {
     const filmId = movieDiv.dataset.filmId;
@@ -88,6 +110,9 @@ document.querySelectorAll('.movie').forEach(movieDiv => {
         });
     }
 });
+
+
+
 
 // supression de la derniere ligne de la matching list si elle n'est pas complete
 const MatchingMovieGrid = document.querySelector('.matching__list');

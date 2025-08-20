@@ -1,8 +1,6 @@
 <?php 
 include 'includes/open.php'; 
 
-session_start();
-
 $errorValidation = $_SESSION['errorValidation'] ?? '';
 $errorEmail = $_SESSION['errorEmail'] ?? '';
 $errorFormat = $_SESSION['errorFormat'] ?? '';

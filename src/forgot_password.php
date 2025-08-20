@@ -1,7 +1,6 @@
 <?php 
 
     include 'includes/open.php'; 
-    session_start();
 
     $success = $_SESSION['success'] ?? '';
     $error = $_SESSION['error'] ?? '';

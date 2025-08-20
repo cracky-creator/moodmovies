@@ -1,7 +1,6 @@
 <?php 
-session_start();
-require_once 'config/config.php';
 include 'includes/open.php';
+require_once 'config/config.php';
 
 $user_id = $_SESSION['user_id'] ?? null;
 
@@ -100,9 +99,9 @@ if ($lastNotedMovie) {
 
                 <div class="movie__links">
 
-                    <a href="login.php" class="movie__links__el box-gradient"><span>Se connecter</span></a>
+                    <a href="login.php" class="movie__links__el movie__link box-gradient"><span>Se connecter</span></a>
     
-                    <a href="register.php" class="movie__links__el box-gradient"><span>S'inscrire</span></a>
+                    <a href="register.php" class="movie__links__el movie__link box-gradient"><span>S'inscrire</span></a>
 
                 </div>
                 

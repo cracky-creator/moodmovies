@@ -127,6 +127,14 @@
         gap: $p-margin-desktop;
         padding: calc($p-margin-desktop / 2);
         border-radius: calc($p-margin-desktop / 2);
+
+        &:hover{
+            scale: 1.1;
+        }
+    
+        &:active{
+            scale: 0.9;
+        }
     }
 
     .movie__links{
@@ -138,17 +146,7 @@
         &__el{
             width: 125px;
             padding: calc($p-margin-desktop / 2) 0;
-            border-radius: calc($p-margin-desktop / 2);
-            display: flex;
             justify-content: center;
-
-            &:hover{
-                scale: 1.1;
-            }
-
-            &:active{
-                scale: 0.9;
-            }
         }
     }
 }

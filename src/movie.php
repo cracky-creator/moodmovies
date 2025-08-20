@@ -1,9 +1,7 @@
 <?php
-    session_start();
+    include 'includes/open.php';
     
     include 'functions/functions.php';
-
-    include 'includes/open.php';
 
     $movieID = $_GET['id'];
     $movieEmotions = $_GET['emotions'];

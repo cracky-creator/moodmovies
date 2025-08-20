@@ -225,20 +225,19 @@ button:active {
   cursor: pointer;
 }
 .nav__user_profile:hover {
-  border: 2px solid rgb(142, 142, 142);
+  border: 2px solid rgb(255, 255, 255);
 }
 .nav__user_profile:active {
   border: 2px solid white;
 }
-.nav__user_profile.active {
-  border: 2px solid white;
-}
-.nav__user_profile h3 {
+.nav__user_profile h4 {
   text-align: center;
+  color: black;
 }
 .nav__user_profile .user_profile__modal {
-  background-color: rgb(40, 40, 40);
+  background-color: rgb(0, 0, 0);
   padding: 36px;
+  border: 2px solid white;
   border-radius: 18px;
   position: absolute;
   top: calc(100% + 9px);
@@ -249,9 +248,23 @@ button:active {
 }
 .nav__user_profile .user_profile__modal p {
   white-space: nowrap;
+  color: rgb(198, 198, 198);
 }
 .nav__user_profile .user_profile__modal.active {
   display: flex;
+}
+.nav__user_profile .user_profile__modal .modal__title {
+  font-weight: 600;
+  color: white;
+}
+.nav__user_profile .user_profile__modal .modal__link {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  padding: 9px;
+  border-radius: 9px;
+}
+.nav__user_profile .user_profile__modal .modal__link span {
+  color: black;
 }
 .nav__link span {
   color: white;
@@ -994,6 +1007,12 @@ form::after {
   padding: 9px;
   border-radius: 9px;
 }
+.last_note .movie__link:hover {
+  scale: 1.1;
+}
+.last_note .movie__link:active {
+  scale: 0.9;
+}
 .last_note .movie__links {
   flex: 0 0 auto;
   align-self: flex-start;
@@ -1003,15 +1022,7 @@ form::after {
 .last_note .movie__links__el {
   width: 125px;
   padding: 9px 0;
-  border-radius: 9px;
-  display: flex;
   justify-content: center;
-}
-.last_note .movie__links__el:hover {
-  scale: 1.1;
-}
-.last_note .movie__links__el:active {
-  scale: 0.9;
 }
 
 .noted_movies__content {

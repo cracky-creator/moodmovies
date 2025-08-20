@@ -1,7 +1,6 @@
 <?php
 require 'config/config.php';
 include 'includes/open.php';
-session_start();
 
 if (!isset($_GET['token'])) {
     die("Lien invalide.");

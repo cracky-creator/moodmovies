@@ -407,7 +407,7 @@ function getTopMoviesByEmotion(array $userIntentions, array $userStyles): array 
 }
 
 // charges php mailer 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

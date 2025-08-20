@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'includes/open.php';
 include 'functions/functions.php';
 include_once 'config/config.php';
 
@@ -18,8 +18,6 @@ $userStyles     = $_SESSION['user_style']     ?? [];
 $movies = getMatchingFilms($userEmotions, $userIntentions, $userStyles);
 
 $moviesByEmotion = getTopMoviesByEmotion($userIntentions, $userStyles);
-
-include 'includes/open.php';
 
 ?>
 

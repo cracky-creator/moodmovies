@@ -1,6 +1,5 @@
 <?php
-    session_start();
-
+    include 'includes/open.php';
     include 'functions/functions.php';
 
     $emotions = getEmotionsList();
@@ -11,8 +10,6 @@
     $userEmotions   = $_SESSION['user_emotion']   ?? [];
     $userIntentions = $_SESSION['user_intention'] ?? [];
     $userStyles     = $_SESSION['user_style']     ?? [];
-
-    include 'includes/open.php';
 
 ?>
 

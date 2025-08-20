@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $username = $_SESSION['username'] ?? '';
+    $firstLetter = mb_strtoupper(mb_substr($username, 0, 1), 'UTF-8');
 ?>
 
 <!DOCTYPE html>
@@ -42,15 +44,17 @@
         
         <?php } else { ?>
 
-            <div class="nav__user_profile">
+            <div class="nav__user_profile box-gradient">
 
-                <h4 class="user_profile__title"><?php echo ucfirst($_SESSION['username']); ?></h4>
+                <h4 class="user_profile__title"><?php echo htmlspecialchars($firstLetter, ENT_QUOTES, 'UTF-8'); ?></h4>
 
                 <div class="user_profile__modal">
 
-                    <p class="user__pseudo"><?php echo $_SESSION['username']; ?></p>
+                    <p class="modal__title"><?php echo $_SESSION['username']; ?></p>
 
-                    <p class="user__mail"><?php echo $_SESSION['email']; ?></p>
+                    <p><?php echo $_SESSION['email']; ?></p>
+
+                    <a href="logout.php" class="modal__link box-gradient"><span>Se déconnecter</span></a>
 
                 </div>
 
