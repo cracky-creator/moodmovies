@@ -12,7 +12,7 @@ date_default_timezone_set('Europe/Brussels');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>moodmovies</title>
+    <title>moodmovies - Trouvez facilement le film parfait selon vos envies</title>
 
     <meta property="og:title" content="MoodMovies - Ton mood. Tes films. Tes listes." />
     <meta property="og:description" content="Trouvez facilement le film parfait selon vos envies. Chaque soirée devient une expérience cinéma sur mesure !" />
@@ -29,6 +29,7 @@ date_default_timezone_set('Europe/Brussels');
 
     <link rel="stylesheet" href="styles/app.css">
     <script src="scripts/app.js" defer></script>
+    <link rel="icon" href="data:,">
 </head>
 <body>
 <div class="notif-container"><span class="hidden">notif-container</span></div>
