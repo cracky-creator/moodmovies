@@ -1,0 +1,144 @@
+.intro{
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &__wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-h3);
+
+        p{
+            text-align: left;
+        }
+    }
+
+    &__btn-container{
+        width: 100%;
+        margin-top: var(--size-h3);
+        display: flex;
+        gap: var(--size-p);
+        justify-content: center;
+    }
+
+    &__btn{
+        flex: 1;
+        height: 44px;
+        border: solid 1px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        
+        span{
+            font-weight: 600;
+            position: relative;
+            z-index: 5;
+        }
+
+        &::before{
+            content: '';
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease-out, scale 0.3s ease-out;
+        }
+    }
+
+    .register-btn{
+        border-color: $c-blue;
+        
+        span{
+            color: $c-blue;
+        }
+
+        &::before{
+            background-color: $c-blue;
+        }
+
+        &:hover{
+            span{
+                color: $c-background;
+            }
+
+            &::before{
+                width: 100%;
+            }
+        }
+
+        &:active{
+            background-color: $c-blue;
+            scale: 0.95;
+
+            span{
+                color: $c-background;
+            }
+
+            &::before{
+                width: 0%;
+            }
+        }
+    }
+
+    .login-btn{
+        border-color: $c-green;
+        
+        span{
+            color: $c-green;
+        }
+
+        &::before{
+            background-color: $c-green;
+        }
+
+        &:hover{
+            span{
+                color: $c-background;
+            }
+
+            &::before{
+                width: 100%;
+            }
+        }
+
+        &:active{
+            background-color: $c-green;
+            scale: 0.95;
+
+            span{
+                color: $c-background;
+            }
+
+            &::before{
+                width: 0%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .intro{
+
+        &__wrapper{
+            padding: var(--size-p) 15vw;
+        }
+    }
+}
+
+@media screen and (min-width: 1100px) {
+
+    .intro{
+
+        &__wrapper{
+            padding: 0;
+            max-width: 700px;
+        }
+    }
+}

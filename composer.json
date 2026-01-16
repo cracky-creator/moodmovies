@@ -1,0 +1,13 @@
+{
+    "require": {
+        "symfony/var-dumper": "^5.3",
+        "phpmailer/phpmailer": "^7.0",
+        "guzzlehttp/guzzle": "^7.10",
+        "openai-php/client": "^0.18.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

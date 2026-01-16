@@ -1,0 +1,79 @@
+.register{
+    height: 100dvh;
+
+    &__wrapper{
+        width: 100%;
+    }
+
+    .app-title{
+        margin: 0px 0px calc(var(--size-p) + 21px) 0px;
+        font-family: 'quicksand', sans-serif;
+        font-weight: 700;
+    }
+
+    &__progress-bar{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .bar{
+            display: inline-block;
+            width: calc(calc(100% - 24px) / 4);
+            height: 6px;
+            border-radius: 50px;
+            border: 1px solid $c-text;
+            position: relative;
+            text-indent: -9999px; /* décale le texte hors de l’écran */
+            overflow: hidden;      /* pour s’assurer que rien ne déborde */
+            white-space: nowrap;
+
+            &::before{
+                content: '';
+                display: inline-block;
+                height: 5px;
+                background-color: $c-text;
+                position: absolute;
+                left: 0;
+                width: 0%;
+                transition: width 0.5s ease-out;
+            }
+
+            &.bar--active::before{
+                width: 100%;
+            }
+        }
+    }
+
+    &__progress-counter{
+        margin: calc(var(--size-p) / 2) 0 0 0;
+    }
+
+}
+
+@media screen and (min-width: 1100px) {
+    .register{
+        &__wrapper{
+            width: calc(50% - calc(var(--size-p) * 4));
+            right: var(--size-h2);
+            position: absolute;
+            display: flex;
+            align-items: center;
+            height: calc(100dvh - var(--size-h2));
+
+            &-top{
+                width: 100%;
+                position: absolute;
+                top: var(--size-p);
+            }
+        }
+
+        .app-title{
+            position: fixed;
+            left: 25%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: var(--size-h1);
+        }
+    }
+}
+

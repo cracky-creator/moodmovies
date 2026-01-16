@@ -1,0 +1,256 @@
+<?php
+
+require 'includes/open.php';
+
+$userName = getUserName($pdo, $userId);
+
+$userAsset = getUserAsset($pdo, $userId);
+
+$userDates = getUserFormattedDates($pdo, $userId);
+
+$userAllListStats = getListMoviesStats($pdo, $userId);
+
+$userListsStats = getListsWithStats($pdo, $userId);
+
+$barGradient = generateListsGradient($userListsStats);
+
+$userEmotionsStats = getEmotionsWithCounts($pdo, $userId);
+
+$userFavoriteEmotions = getUserFavoriteEmotions($pdo, $userId);
+
+$userGenresStats = getGenresWithCounts($pdo, $userId);
+
+$userFavoriteGenres = getUserFavoriteGenres($pdo, $userId);
+
+?>
+
+<section class="profil">
+
+    <div class="profil-wrapper">
+
+        <div class="profil-section">
+    
+            <div class="profil-section__user-asset" style="background-image: url('<?php echo $userAsset; ?>');">
+    
+                <button class="user-asset-btn">
+    
+                    <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    
+                    <path d="M10.5625 0H2.4375C1.05625 0 0 1.01562 0 2.34375V22.6562C0 23.9844 1.05625 25 2.4375 25H10.5625C11.9438 25 13 23.9844 13 22.6562V2.34375C13 1.01562 11.9438 0 10.5625 0ZM6.5 5.46875C6.9875 5.46875 7.3125 5.85938 7.3125 6.25C7.3125 6.64062 6.90625 7.03125 6.5 7.03125C6.09375 7.03125 5.6875 6.64062 5.6875 6.25C5.6875 5.85938 6.0125 5.46875 6.5 5.46875ZM6.5 7.8125C6.9875 7.8125 7.3125 8.20312 7.3125 8.59375C7.3125 8.98438 6.90625 9.375 6.5 9.375C6.09375 9.375 5.6875 8.98438 5.6875 8.59375C5.6875 8.20312 6.0125 7.8125 6.5 7.8125ZM6.5 10.1562C6.9875 10.1562 7.3125 10.5469 7.3125 10.9375C7.3125 11.3281 6.90625 11.7188 6.5 11.7188C6.09375 11.7188 5.6875 11.3281 5.6875 10.9375C5.6875 10.5469 6.0125 10.1562 6.5 10.1562ZM7.3125 16.4062V17.1875C7.3125 17.6563 6.9875 17.9688 6.5 17.9688C6.0125 17.9688 5.6875 17.6563 5.6875 17.1875V16.4062C5.6875 15.9375 6.0125 15.625 6.5 15.625C6.9875 15.625 7.3125 15.9375 7.3125 16.4062ZM5.6875 13.2812C5.6875 13.75 5.3625 14.0625 4.875 14.0625H4.0625C3.575 14.0625 3.25 13.75 3.25 13.2812C3.25 12.8125 3.575 12.5 4.0625 12.5H4.875C5.3625 12.5 5.6875 12.8125 5.6875 13.2812ZM4.0625 3.125C4.55 3.125 4.875 3.51562 4.875 3.90625C4.875 4.29688 4.46875 4.6875 4.0625 4.6875C3.65625 4.6875 3.25 4.29688 3.25 3.90625C3.25 3.51562 3.575 3.125 4.0625 3.125ZM4.0625 5.46875C4.55 5.46875 4.875 5.85938 4.875 6.25C4.875 6.64062 4.46875 7.03125 4.0625 7.03125C3.65625 7.03125 3.25 6.64062 3.25 6.25C3.25 5.85938 3.575 5.46875 4.0625 5.46875ZM4.0625 7.8125C4.55 7.8125 4.875 8.20312 4.875 8.59375C4.875 8.98438 4.46875 9.375 4.0625 9.375C3.65625 9.375 3.25 8.98438 3.25 8.59375C3.25 8.20312 3.575 7.8125 4.0625 7.8125ZM4.0625 10.1562C4.55 10.1562 4.875 10.5469 4.875 10.9375C4.875 11.3281 4.46875 11.7188 4.0625 11.7188C3.65625 11.7188 3.25 11.3281 3.25 10.9375C3.25 10.5469 3.575 10.1562 4.0625 10.1562ZM4.875 19.5312H4.0625C3.575 19.5312 3.25 19.2188 3.25 18.75C3.25 18.2812 3.575 17.9688 4.0625 17.9688H4.875C5.3625 17.9688 5.6875 18.2812 5.6875 18.75C5.6875 19.2188 5.3625 19.5312 4.875 19.5312ZM7.3125 21.0938C7.3125 21.5625 6.9875 21.875 6.5 21.875C6.0125 21.875 5.6875 21.5625 5.6875 21.0938V20.3125C5.6875 19.8437 6.0125 19.5312 6.5 19.5312C6.9875 19.5312 7.3125 19.8437 7.3125 20.3125V21.0938ZM8.9375 19.5312H8.125C7.6375 19.5312 7.3125 19.2188 7.3125 18.75C7.3125 18.2812 7.6375 17.9688 8.125 17.9688H8.9375C9.425 17.9688 9.75 18.2812 9.75 18.75C9.75 19.2188 9.425 19.5312 8.9375 19.5312ZM8.9375 14.0625H8.125C7.6375 14.0625 7.3125 13.75 7.3125 13.2812C7.3125 12.8125 7.6375 12.5 8.125 12.5H8.9375C9.425 12.5 9.75 12.8125 9.75 13.2812C9.75 13.75 9.425 14.0625 8.9375 14.0625ZM8.9375 11.7188C8.45 11.7188 8.125 11.3281 8.125 10.9375C8.125 10.5469 8.53125 10.1562 8.9375 10.1562C9.34375 10.1562 9.75 10.5469 9.75 10.9375C9.75 11.3281 9.425 11.7188 8.9375 11.7188ZM8.9375 9.375C8.45 9.375 8.125 8.98438 8.125 8.59375C8.125 8.20312 8.53125 7.8125 8.9375 7.8125C9.34375 7.8125 9.75 8.20312 9.75 8.59375C9.75 8.98438 9.425 9.375 8.9375 9.375ZM8.9375 7.03125C8.45 7.03125 8.125 6.64062 8.125 6.25C8.125 5.85938 8.53125 5.46875 8.9375 5.46875C9.34375 5.46875 9.75 5.85938 9.75 6.25C9.75 6.64062 9.425 7.03125 8.9375 7.03125Z" fill="white"/>
+    
+                    </svg>
+    
+                </button>
+    
+                <input type="file" class="user-asset-input hidden" accept="image/*">
+    
+            </div>
+    
+            <h3 class="profil-section__user-name"><?php echo $userName; ?></h3>
+    
+            <ul class="profil-section__list auth-list">
+    
+                <li class="profil-section__list__el auth-list__el">
+    
+                    <p class="auth-list__el-title last-login-title">Dernière co.</p>
+                    
+                    <p class="auth-list__el-date"><?php echo $userDates['previous_login']; ?></p>
+    
+                </li>
+    
+                <li class="profil-section__list__el auth-list__el">
+    
+                    <p class="auth-list__el-title register-title">Inscription</p>
+                    
+                    <p class="auth-list__el-date"><?php echo $userDates['registration']; ?></p>
+    
+                </li>
+    
+                <li class="profil-section__list__el auth-list__el">
+    
+                    <button class="log-out-btn"><span>Déconnexion</span></button>
+    
+                    <div class="log-out-modal hidden">
+    
+                        <p>Etes vous sur de vouloir vous déconnecter ?</p>
+    
+                        <div class="modal-btn-container">
+    
+                            <button class="modal-btn btn-log-out-start"><span>Oui</span></button>
+                            
+                            <button class="modal-btn btn-log-out-stop"><span>Non</span></button>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="log-out-modal-overlay hidden"></div>
+    
+                </li>
+                    
+            </ul>
+    
+    
+        </div>
+    
+        <div class="profil-section">
+    
+            <div class="profil-section__title"><p>Statistiques générales</p></div>
+        
+            <div class="profil-section__list-wrapper">
+    
+                <ul class="profil-section__list">
+    
+                    <li class="profil-section__list__el">
+    
+                        <p class="list__el__title">Films ajoutés :</p>
+    
+                        <p class="list__el__value"><?php echo $userAllListStats['total_films_in_lists']; ?></p>
+    
+                    </li>
+    
+                    <li class="profil-section__list__el">
+    
+                        <p class="list__el__title">Films notés :</p>
+    
+                        <p class="list__el__value"><?php echo $userAllListStats['total_rated_films']; ?></p>
+    
+                    </li>
+    
+                    <li class="profil-section__list__el">
+    
+                        <p class="list__el__title">Durée total :</p>
+    
+                        <p class="list__el__value"><?php echo $userAllListStats['duration_numeric'] . ' ' . $userAllListStats['duration_unit']; ?></p>
+    
+                    </li>
+    
+                    <li class="profil-section__list__el">
+    
+                        <p class="list__el__title">Note moyenne :</p>
+    
+                        <p class="list__el__value"><?php echo $userAllListStats['average_rating']; ?></p>
+    
+                    </li>
+    
+                </ul>
+    
+            </div>
+        
+        </div>
+    
+        <div class="profil-section">
+    
+            <div class="profil-section__title"><p>Mes listes</p></div>
+    
+            <ul class="profil-section__list">
+    
+                <?php foreach($userListsStats as $userListStats){ ?>
+    
+                    <li class="profil-section__list__el">
+    
+                        <span class="list__el__color" style="background-color: <?php echo $userListStats['color']; ?>"></span>
+    
+                        <p class="list__el__title color-space"><?php echo $userListStats['name'] . ' :'; ?></p>
+    
+                        <p class="list__el__value"><?php echo $userListStats['film_count']; ?></p>
+    
+                    </li>
+    
+                <?php } ?>  
+    
+            </ul>
+    
+            <div class="profil-section__bar" style="background: <?php echo $barGradient; ?>;"></div>
+    
+        </div>
+    
+        <div class="profil-section">
+    
+            <div class="profil-section__title"><p>Statistiques par émotion</p></div>
+    
+            <p class="profil-section__list-title">Emotions du moment :</p>
+    
+            <ul class="profil-section__list">
+    
+                <?php foreach($userFavoriteEmotions as $userFavoriteEmotion){ ?>
+    
+                    <li class="profil-section__list__el top-value">
+    
+                        <p class="list__el__title"><?php echo $userFavoriteEmotion['name']; ?></p>
+    
+                    </li>
+    
+                <?php } ?>
+    
+            </ul>
+    
+            <p class="profil-section__list-title">Statistiques détaillées :</p>
+    
+            <ul class="profil-section__list">
+    
+                <?php foreach($userEmotionsStats as $userEmotionStats){ ?>
+    
+                    <li class="profil-section__list__el">
+    
+                        <p class="list__el__title"><?php echo $userEmotionStats['name'] . ' :'; ?></p>
+    
+                        <p class="list__el__value"><?php echo $userEmotionStats['film_count']; ?></p>
+    
+                    </li>
+    
+                <?php } ?>  
+    
+            </ul>
+    
+        </div>
+    
+        <div class="profil-section">
+    
+            <div class="profil-section__title"><p>Statistiques par genre</p></div>
+    
+            <p class="profil-section__list-title">Genres du moment :</p>
+    
+            <ul class="profil-section__list">
+    
+                <?php foreach($userFavoriteGenres as $userFavoriteGenre){ ?>
+    
+                    <li class="profil-section__list__el top-value">
+    
+                        <p class="list__el__title"><?php echo $userFavoriteGenre['name']; ?></p>
+    
+                    </li>
+    
+                <?php } ?>
+    
+            </ul>
+    
+            <p class="profil-section__list-title">Statistiques détaillées :</p>
+    
+            <ul class="profil-section__list">
+    
+                <?php foreach($userGenresStats as $userGenreStats){ ?>
+    
+                    <li class="profil-section__list__el">
+    
+                        <p class="list__el__title"><?php echo $userGenreStats['name'] . ' :'; ?></p>
+    
+                        <p class="list__el__value"><?php echo $userGenreStats['film_count']; ?></p>
+    
+                    </li>
+    
+                <?php } ?>  
+    
+            </ul>
+    
+        </div>
+
+    </div>
+
+</section>
+
+<?php
+
+require 'includes/close.php';
+
+?>

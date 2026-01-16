@@ -1,0 +1,25 @@
+// fonts sizes
+:root {
+  --size-p: 16px;
+  --size-h3: calc(var(--size-p) * 1.414);
+  --size-h2: calc(var(--size-p) * 2);
+  --size-h1: calc(var(--size-h3) * 2);
+}
+
+// font weights
+$weight-regular: 400;
+$weight-semi-bold: 600;
+$weight-bold: 700;
+
+//line height
+$line-height: 140%;
+
+// colors
+$c-text: #ffffff;
+$c-text-dark: #c5c5c5;
+$c-background: #000000;
+$c-background-light: #1f1f1f;
+$c-gray: #4D4D4D;
+$c-blue: #3B82F6;
+$c-green: #10B981;
+$c-red: #EF4444;

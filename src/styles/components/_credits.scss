@@ -1,0 +1,23 @@
+.credits{
+    width: 100%;
+    padding: calc(64px + var(--size-p)) var(--size-p) var(--size-p);
+
+    &__title{
+        padding-left: 8px;
+        margin-bottom: var(--size-h2);
+    }
+
+    &__list-title{
+        margin-bottom: var(--size-h3);
+        padding-left: 8px;
+    }
+
+    &__list{
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        list-style-type: disc;
+        margin-bottom: 58px;
+    }
+}
