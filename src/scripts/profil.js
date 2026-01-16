@@ -8,7 +8,7 @@ export function profil() {
     const userAssetInput = document.querySelector('.user-asset-input');
     const userAssetBtn = document.querySelector('.user-asset-btn');
 
-    // Clic sur le bouton → ouvrir le sélecteur de fichiers
+    // Clic sur le bouton pour ouvrir le sélecteur de fichiers
     userAssetBtn.addEventListener('click', () => userAssetInput.click());
 
     // Quand l'utilisateur choisit un fichier
@@ -25,10 +25,10 @@ export function profil() {
         })
         .then(res => res.json())
         .then(data => {
-            clearNotifs(); // supprime les notifications existantes
+            clearNotifs();
 
             if (data.success) {
-                // Met à jour le background de la div
+               
                 userAssetDiv.style.backgroundImage = `url('${data.path}?t=${new Date().getTime()}')`;
                 showNotif('Avatar mis à jour !', 'success');
             } else {
@@ -60,7 +60,7 @@ export function profil() {
         toggleScroll(true);
     });
 
-    // Fermer la modal (Non ou overlay)
+    // Fermer la modal
     const closeModal = () => {
         modal.classList.add('hidden');
         overlay.classList.add('hidden');
@@ -70,7 +70,7 @@ export function profil() {
     btnCancel.addEventListener('click', closeModal);
     overlay.addEventListener('click', closeModal);
 
-    // Déconnexion (Oui)
+    // Déconnexion
     btnConfirm.addEventListener('click', () => {
         fetch('./actions/logout.php', {
             method: 'POST'
@@ -78,7 +78,7 @@ export function profil() {
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                // Redirection après déconnexion
+            
                 window.location.href = data.redirect || './login.php';
             } else {
                 alert(data.message || 'Erreur lors de la déconnexion.');

@@ -125,7 +125,7 @@
                 }
     
                 &:checked + label {
-                    background-color: $c-text; /* couleur quand sélectionné */
+                    background-color: $c-text; 
                     color: $c-background
                 }
             }

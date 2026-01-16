@@ -7,7 +7,6 @@ export function loginForm() {
 
     const urlParams = new URLSearchParams(window.location.search);
 
-    // Notifications UX simples via flags
     if (urlParams.get('registered') === '1') {
         showNotif("Inscription réussie ! Un email de validation vous a été envoyé.", "success");
     } else if (urlParams.get('validated') === '1') {
@@ -17,7 +16,7 @@ export function loginForm() {
     const form = document.querySelector('.login__form');
     
     form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Bloque le submit classique
+        e.preventDefault();
 
         clearNotifs();
     
@@ -30,14 +29,13 @@ export function loginForm() {
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                // Connexion OK, redirection
+               
                 window.location.href = 'index.php';
             } else {
-                // Affiche toutes les erreurs via showNotif
+               
                 data.errors.forEach(err => showNotif(err, "error"));
             }
-
-            // Affiche les infos côté front (ex : compte validé)
+            
             data.info?.forEach(msg => showNotif(msg, "success"));
         })
         .catch(err => {

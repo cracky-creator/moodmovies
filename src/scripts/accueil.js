@@ -3,11 +3,8 @@
 import { showNotif, clearNotifs } from './notifications.js';
 
 export function accueil() {
-
-    /* ---------------------------
-           SELECTS
-        --------------------------- */
-
+    
+        // SELECTS
         function postData(url, body) {
             return fetch(url, {
                 method: 'POST',

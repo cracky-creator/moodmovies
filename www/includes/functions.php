@@ -25,14 +25,13 @@ function getPDO() {
 }
 
 function getAllEmotions() {
-    $pdo = getPDO(); // Utilise la fonction que tu as déjà créée pour récupérer la connexion PDO
+    $pdo = getPDO(); 
 
     $stmt = $pdo->prepare("SELECT id, name, description FROM emotions ORDER BY name ASC");
     $stmt->execute();
 
-    $emotions = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère toutes les émotions
-
-    return $emotions; // Retourne un tableau associatif avec id et nom
+    $emotions = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    return $emotions; 
 }
 
 function getAllGenres() {
@@ -43,10 +42,10 @@ function getAllGenres() {
 }
 
 function getUserByEmail(string $email) {
-    $pdo = getPDO(); // ta fonction qui retourne l'objet PDO
+    $pdo = getPDO(); 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->execute([$email]);
-    return $stmt->fetch(); // retourne false si aucun utilisateur trouvé
+    return $stmt->fetch(); 
 }
 
 function getUserById(int $userId): ?array {

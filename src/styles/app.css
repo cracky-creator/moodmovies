@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "Quicksand";
   src: url("../assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf");
@@ -559,8 +558,8 @@ body.no-scroll {
   border-radius: 50px;
   border: 1px solid #ffffff;
   position: relative;
-  text-indent: -9999px; /* décale le texte hors de l’écran */
-  overflow: hidden; /* pour s’assurer que rien ne déborde */
+  text-indent: -9999px;
+  overflow: hidden;
   white-space: nowrap;
 }
 .register__progress-bar .bar::before {
@@ -808,7 +807,7 @@ body.no-scroll {
   scale: 1.05;
 }
 .form__list__el input[type=checkbox]:checked + label {
-  background-color: #ffffff; /* couleur quand sélectionné */
+  background-color: #ffffff;
   color: #000000;
 }
 .form__nav {

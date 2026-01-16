@@ -3,9 +3,7 @@
 export function list() {
     document.addEventListener('DOMContentLoaded', () => {
 
-        // =========================
-        // 🔹 Bouton reverse list
-        // =========================
+        // Bouton reverse list
         const btn = document.querySelector('.list-btn-reverse');
         const list = document.querySelector('.list__movie-list');
 
@@ -36,9 +34,7 @@ export function list() {
             });
         }
 
-        // =========================
-        // 🔹 Column title responsive
-        // =========================
+        // Column title responsive
         function updateMovieListColumnTitle() {
             const el = document.querySelector('.list__movie-list__column-title');
             if (!el) return;

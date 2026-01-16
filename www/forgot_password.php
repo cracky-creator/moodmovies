@@ -2,7 +2,6 @@
 
 require_once 'includes/open.php';
 
-// Vérifie si une notification est passée en GET
 if (isset($_GET['notif']) && isset($_GET['message'])) {
     $type = htmlspecialchars($_GET['notif']);    // "error" ou "success"
     $message = htmlspecialchars(urldecode($_GET['message']));

@@ -9,9 +9,7 @@ import { clearNotifs } from './notifications.js';
 
 export function registerForm() {
 
-    // ======================================================
     // STATE
-    // ======================================================
     const registerState = {
         username: "",
         email: "",
@@ -25,7 +23,7 @@ export function registerForm() {
 
     const MOOD_LIMIT = 3;
     const GENRE_LIMIT = 4;
-    let currentStep = 0; // étape initiale
+    let currentStep = 0;
 
     const screenWidth = window.innerWidth;
     let stepGap;
@@ -40,9 +38,7 @@ export function registerForm() {
     const debounceTimers = {};
     let checkingAvailability = false;
 
-    // ======================================================
     // ELEMENTS
-    // ======================================================
     const inputUsername = document.querySelector('#username');
     const inputEmail = document.querySelector('#email');
     const inputAge = document.querySelector('#age');
@@ -63,9 +59,7 @@ export function registerForm() {
     const bars = document.querySelectorAll('.register__progress-bar .bar');
     const globalCounter = document.querySelector('.progress-counter-increment');
 
-    // ======================================================
     // HELPERS
-    // ======================================================
     function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
@@ -145,9 +139,7 @@ export function registerForm() {
         setTimeout(() => btn.classList.remove('shake'), 300);
     }
 
-    // ======================================================
     // VALIDATION
-    // ======================================================
     function validateStep(step) {
         if (step === 0) {
             return (
@@ -201,9 +193,7 @@ export function registerForm() {
         }
     }
 
-    // ======================================================
     // INPUT EVENTS
-    // ======================================================
 
     // Empêcher les espaces dans le pseudo
     inputUsername.addEventListener('input', () => {
@@ -257,9 +247,7 @@ export function registerForm() {
         updateNextButtonState();
     });
 
-    // ======================================================
     // CHECKBOXES
-    // ======================================================
     function limitCheckboxes(checkboxes, maxAllowed, counterEl) {
         checkboxes.forEach(cb => {
             cb.addEventListener("change", () => {
@@ -283,9 +271,7 @@ export function registerForm() {
     limitCheckboxes(moodCheckboxes, MOOD_LIMIT, moodCounter);
     limitCheckboxes(genreCheckboxes, GENRE_LIMIT, genreCounter);
 
-    // ======================================================
     // NAVIGATION
-    // ======================================================
     registerNext.addEventListener('click', e => {
         e.preventDefault();
         clearNotifs();
@@ -293,7 +279,6 @@ export function registerForm() {
 
         if (currentStep === 0) {
 
-            // 1️⃣ Champs vides → une seule notif et STOP
             if (
                 !registerState.username.trim() ||
                 !registerState.email.trim() ||
@@ -302,10 +287,10 @@ export function registerForm() {
                 clearNotifs();
                 showNotif("Tous les champs ne sont pas remplis", "error");
                 shakeButton(registerNext);
-                return; // ⛔ on bloque tout le reste
+                return; 
             }
 
-            // 2️⃣ Pseudo déjà utilisé
+            // Pseudo déjà utilisé
             if (!registerState.usernameAvailable) {
                 clearNotifs();
                 showNotif("Pseudo déjà utilisé", "error");
@@ -313,7 +298,7 @@ export function registerForm() {
                 return;
             }
 
-            // 3️⃣ Email invalide ou déjà utilisé
+            // Email invalide ou déjà utilisé
             if (!isValidEmail(registerState.email) || !registerState.emailAvailable) {
                 clearNotifs();
                 showNotif("Email invalide ou déjà utilisé", "error");
@@ -321,7 +306,7 @@ export function registerForm() {
                 return;
             }
 
-            // 4️⃣ Âge invalide
+            // Âge invalide
             if (!registerState.ageValid) {
                 clearNotifs();
                 showNotif("Âge trop jeune (10+) ou improbable", "error");
@@ -375,11 +360,9 @@ export function registerForm() {
         updateNextButtonState();
     });
 
-    // ======================================================
     // INITIAL UPDATE
-    // ======================================================
     updateSummary();
     updateProgress();
     updateNextButtonState();
-    updateReturnButtons(); // <-- mise à jour initiale
+    updateReturnButtons();
 }

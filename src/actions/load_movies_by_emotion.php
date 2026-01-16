@@ -15,9 +15,7 @@ if ($emotionId <= 0) {
     exit;
 }
 
-/* -----------------------------
-   Filtres utilisateur (GET)
------------------------------ */
+// Filtres utilisateur (GET)
 $selectedEmotions = !empty($_GET['emotions'])
     ? array_map('intval', explode(',', $_GET['emotions']))
     : [];
@@ -25,25 +23,18 @@ $selectedGenres = !empty($_GET['genres'])
     ? array_map('intval', explode(',', $_GET['genres']))
     : [];
 
-/* -----------------------------
-   Exclusion des films déjà affichés
------------------------------ */
+// Exclusion des films déjà affichés
 $excludedIds = !empty($_GET['exclude'])
     ? array_map('intval', explode(',', $_GET['exclude']))
     : [];
-
-/* -----------------------------
-   Exclusion des films déjà en film_list
------------------------------ */
+// Exclusion des films déjà en film_list
 $stmt = $pdo->prepare("SELECT film_id FROM film_list WHERE user_id = :user");
 $stmt->execute(['user' => $userId]);
 $excludedUserFilms = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 $excludedIds = array_merge($excludedIds, $excludedUserFilms);
 
-/* -----------------------------
-   Cache dépendant des filtres et exclusions
------------------------------ */
+// Cache dépendant des filtres et exclusions
 $filterHash = md5(
     implode(',', $selectedEmotions) . '|' . implode(',', $selectedGenres) . '|' . implode(',', $excludedIds)
 );

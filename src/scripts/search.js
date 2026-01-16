@@ -12,7 +12,7 @@ export function search() {
 
     const cacheMovies = {};
 
-    // ✅ exclusions séparées
+    // exclusions séparées
     const displayedEmotionIds = new Set(); // global émotions
     const displayedGenreIds   = new Set(); // global genres
 
@@ -23,9 +23,7 @@ export function search() {
     const genreBtn   = document.querySelector('.genre-btn');
     if (!emotionBtn || !genreBtn) return;
 
-    /* ============================
-       🔎 Affichage de la search-bar-list quand focus
-    ============================ */
+    // Affichage de la search-bar-list quand focus
     function openSearchList() {
         searchList.classList.remove('hidden');
     }
@@ -48,9 +46,7 @@ export function search() {
         }
     });
 
-    /* ============================
-       🔎 Recherche textuelle
-    ============================ */
+    //Recherche textuelle
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim();
         if (query.length < 1) {
@@ -86,15 +82,13 @@ export function search() {
             .catch(err => console.error(err));
     });
 
-    /* ============================
-       🎛️ Filtres
-    ============================ */
+    // Filtres
     const MAX_EMOTIONS = 3;
     const MAX_GENRES   = 4;
     const selectedEmotions = new Set();
     const selectedGenres   = new Set();
 
-    // --- Panneau filtres ---
+    // Panneau filtres 
     const filterBtn       = document.querySelector('.filter-btn');
     const filterContainer = document.querySelector('.search__filter-container');
     const filterOverlay   = document.querySelector('.search__filter-overlay');
@@ -151,7 +145,6 @@ export function search() {
                 set.add(id);
             }
 
-            // Toujours charger même si aucun filtre n'est coché
             emotionBtn.classList.contains('active') ? loadEmotions() : loadGenres();
         });
     });
@@ -163,9 +156,7 @@ export function search() {
         return params.join('&');
     }
 
-    /* ============================
-       📦 Affichage
-    ============================ */
+    // Affichage
     function appendMovieList(title, movies, type) {
         if (!movies || !movies.length) return;
 
@@ -192,9 +183,7 @@ export function search() {
         });
     }
 
-    /* ============================
-       😄 Chargement émotions
-    ============================ */
+    // Chargement émotions
     function loadEmotions() {
         emotionBtn.classList.add('active');
         genreBtn.classList.remove('active');
@@ -238,9 +227,7 @@ export function search() {
         next();
     }
 
-    /* ============================
-       🎬 Chargement genres
-    ============================ */
+    // Chargement genres
     function loadGenres() {
         genreBtn.classList.add('active');
         emotionBtn.classList.remove('active');
@@ -284,9 +271,7 @@ export function search() {
         next();
     }
 
-    /* ============================
-    🚀 Init
-    ============================ */
+    // Init
     fetch('actions/get_emotions.php')
         .then(res => res.json())
         .then(data => {
@@ -299,7 +284,6 @@ export function search() {
         .then(res => res.json())
         .then(data => GENRES = data);
 
-    // 🔹 Événements boutons
     emotionBtn.addEventListener('click', loadEmotions);
     genreBtn.addEventListener('click', loadGenres);
 }

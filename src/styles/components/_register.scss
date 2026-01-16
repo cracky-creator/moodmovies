@@ -23,8 +23,8 @@
             border-radius: 50px;
             border: 1px solid $c-text;
             position: relative;
-            text-indent: -9999px; /* décale le texte hors de l’écran */
-            overflow: hidden;      /* pour s’assurer que rien ne déborde */
+            text-indent: -9999px; 
+            overflow: hidden;      
             white-space: nowrap;
 
             &::before{

@@ -1,7 +1,5 @@
 <?php
-// ----------------------------
 // 1. Générer un synopsis court
-// ----------------------------
 function generateShortSynopsis($overview) {
     if (empty($overview)) return "Synopsis non disponible.";
 
@@ -12,9 +10,7 @@ function generateShortSynopsis($overview) {
     return is_string($short_synopsis) && $short_synopsis !== '' ? $short_synopsis : "Synopsis non disponible.";
 }
 
-// ----------------------------
 // 2. Déterminer les 3 émotions principales
-// ----------------------------
 function getFilmMoodFromIA($title, $synopsis, $genres = [], $director = '', $actors = []) {
     if (empty($title) || empty($synopsis)) return ['emotions' => []];
 
@@ -51,9 +47,7 @@ function getFilmMoodFromIA($title, $synopsis, $genres = [], $director = '', $act
     return $moods;
 }
 
-// ----------------------------
 // 3. Fonction générique d'appel IA
-// ----------------------------
 function callAI($prompt) {
     try {
         $client = OpenAI::client(OPENAI_API_KEY);

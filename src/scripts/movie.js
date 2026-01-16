@@ -6,9 +6,7 @@ export function movie() {
 
     document.addEventListener('DOMContentLoaded', () => {
 
-        /* ---------------------------
-           DETAILS TABS
-        --------------------------- */
+        // DETAILS TABS
         const btns = document.querySelectorAll('.movie-btn-details');
         const containers = document.querySelectorAll('.movie-container-details');
 
@@ -26,9 +24,7 @@ export function movie() {
             btn.addEventListener('click', () => activateIndex(i));
         });
 
-        /* ---------------------------
-           SELECTS
-        --------------------------- */
+        // SELECTS
         function postData(url, body) {
             return fetch(url, {
                 method: 'POST',
@@ -69,9 +65,7 @@ export function movie() {
             });
         });
 
-        /* ---------------------------
-           RESPONSIVE DOM LOGIC
-        --------------------------- */
+        // RESPONSIVE DOM LOGIC
         const wrapper = document.querySelector('.movie-wrapper');
         if (!wrapper) return;
 
